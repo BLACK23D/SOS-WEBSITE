@@ -1,0 +1,24 @@
+TEST CV
+
+Name: Test User
+Email: test@example.com
+Phone: 1234567890
+
+EDUCATION
+- Test University, Test Degree, 2020-2024
+
+EXPERIENCE
+- Test Company, Test Position, 2023-Present
+  * Responsibility 1
+  * Responsibility 2
+
+SKILLS
+- Skill 1
+- Skill 2
+- Skill 3
+
+LANGUAGES
+- English
+- Test Language
+
+This is a test CV file for testing the email functionality of the application.
