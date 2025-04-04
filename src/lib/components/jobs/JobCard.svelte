@@ -1,117 +1,128 @@
 <script lang="ts">
   import type { Job } from '$lib/types/job';
   import { fade } from 'svelte/transition';
-  import Button from '$lib/components/shared/Button.svelte';
+  import { formatSalary } from '$lib/utils/format';
+  import CountryFlag from '$lib/components/shared/CountryFlag.svelte';
 
   export let job: Job;
 
-  const getApplyLink = (jobType: 'internal' | 'international') => {
-    return jobType === 'international' ? '/apply/international' : '/apply';
-  };
+  // Format salary with proper spacing
+  $: formattedSalary = formatSalary(job.salary || '');
+
+  // Get country code for flag
+  $: countryCode = job.location.toLowerCase() === 'qatar' ? 'qa' : 'kw';
 </script>
 
 <div
-  class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
-  in:fade
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105 job-card"
+  in:fade={{ delay: 200 }}
+  role="article"
+  aria-labelledby="job-title-{job.id}"
 >
-  <div class="flex justify-between items-start mb-4">
-    <div>
-      <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
-        {job.title}
-      </h3>
-      {#if job.company}
-        <p class="text-gray-600 dark:text-gray-400 mt-1">{job.company}</p>
+  <div class="p-6">
+    <!-- Job Header -->
+    <div class="flex justify-between items-start mb-4">
+      <div>
+        <h3 id="job-title-{job.id}" class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+          {job.title}
+        </h3>
+        <div class="flex items-center mt-2 space-x-2">
+          <CountryFlag country={countryCode} size="sm" />
+          <span class="text-gray-600 dark:text-gray-400">{job.location}</span>
+          <span class="text-gray-400 dark:text-gray-500">•</span>
+          <span class="text-gray-600 dark:text-gray-400">{job.type}</span>
+        </div>
+      </div>
+      <!-- Prominent Salary Display -->
+      <div class="bg-primary/10 dark:bg-primary/20 px-4 py-2 rounded-lg">
+        <div class="text-xs text-primary dark:text-primary-light uppercase font-medium">Salary</div>
+        <div class="text-lg font-bold text-primary dark:text-primary-light">{formattedSalary}</div>
+      </div>
+    </div>
+
+    <!-- Job Description -->
+    <p class="text-gray-600 dark:text-gray-400 mb-6">{job.description}</p>
+
+    <!-- Requirements Section -->
+    <div class="space-y-4">
+      <div class="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
+        <h4 class="font-medium text-gray-900 dark:text-gray-100 flex items-center mb-3">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          Requirements
+        </h4>
+        <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1" role="list">
+          {#each job.requirements as requirement}
+            <li>{requirement}</li>
+          {/each}
+        </ul>
+      </div>
+
+      {#if job.type === 'international' && job.benefits && job.benefits.length > 0}
+        <div class="mt-4">
+          <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Benefits:</h4>
+          <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-1">
+            {#each job.benefits as benefit}
+              <li>{benefit}</li>
+            {/each}
+          </ul>
+        </div>
+      {/if}
+
+      {#if job.benefits}
+        <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+          <h4 class="font-medium text-gray-900 dark:text-gray-100 flex items-center mb-3">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Benefits Package
+          </h4>
+          <ul class="grid grid-cols-2 gap-2" role="list">
+            {#each job.benefits as benefit}
+              <li class="flex items-center text-gray-600 dark:text-gray-400">
+                <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                {benefit}
+              </li>
+            {/each}
+          </ul>
+        </div>
       {/if}
     </div>
-    <div class="flex items-center space-x-2">
-      <span
-        class="px-3 py-1 text-sm rounded-full {job.type === 'international'
-          ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-          : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'}"
-      >
-        {job.type === 'international' ? 'International' : 'Local'}
-      </span>
-    </div>
   </div>
 
-  <div class="space-y-2 mb-4">
-    <div class="flex items-center text-gray-600 dark:text-gray-400">
-      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-        />
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-        />
-      </svg>
-      <span>{job.location}</span>
-    </div>
-    {#if job.salary}
-      <div class="flex items-center text-gray-600 dark:text-gray-400">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span>{job.salary}</span>
-      </div>
-    {/if}
-    <div class="flex items-center text-gray-600 dark:text-gray-400">
-      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-        />
-      </svg>
-      <span>Posted: {job.postedDate}</span>
-    </div>
-    {#if job.deadline}
-      <div class="flex items-center text-gray-600 dark:text-gray-400">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span>Deadline: {job.deadline}</span>
-      </div>
-    {/if}
-  </div>
-
-  <div class="prose dark:prose-invert max-w-none mb-6">
-    <p class="text-gray-700 dark:text-gray-300">{job.description}</p>
-  </div>
-
-  <div class="mb-6">
-    <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Requirements:</h4>
-    <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
-      {#each job.requirements as requirement}
-        <li>{requirement}</li>
-      {/each}
-    </ul>
-  </div>
-
-  <div class="flex justify-end">
-    <a href={getApplyLink(job.type)} class="inline-block">
-      <Button>
-        Apply Now
+  <!-- Application Section -->
+  <div class="px-6 py-4 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-100 dark:border-gray-700">
+    <div class="flex flex-col space-y-3">
+      <div class="mt-6 flex flex-wrap gap-4">
         {#if job.type === 'international'}
-          <span class="ml-1 text-sm">(Registration Fee: 5000 KSH)</span>
+          <a
+            href="/apply/international?position={encodeURIComponent(job.title)}&employer={encodeURIComponent(job.employer || '')}"
+            class="flex-1 inline-flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+          >
+            Apply Now
+            <span class="ml-2 text-sm">(Registration Fee: 5,000 KSH)</span>
+          </a>
+        {:else}
+          <a
+            href="/apply/local?position={encodeURIComponent(job.title)}&employer={encodeURIComponent(job.employer || '')}"
+            class="flex-1 inline-flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+          >
+            Apply Now
+          </a>
         {/if}
-      </Button>
-    </a>
+      </div>
+    </div>
   </div>
 </div>
+
+<style lang="postcss">
+  .job-card {
+    @apply transition-all duration-300 hover:shadow-lg;
+  }
+  .job-card:hover {
+    transform: translateY(-4px);
+  }
+</style>

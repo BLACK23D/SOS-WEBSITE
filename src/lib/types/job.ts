@@ -1,15 +1,18 @@
+export type JobType = 'international' | 'local' | 'all';
+export type JobLocation = 'Qatar' | 'Kuwait' | 'all';
+
 export interface Job {
   id: string;
   title: string;
   company?: string;
-  location: string;
-  type: 'internal' | 'international';
+  location: JobLocation;
+  type: JobType;
   salary?: string;
   description: string;
   requirements: string[];
+  benefits?: string[];
   postedDate: string;
   deadline?: string;
+  employer?: string;
+  category?: 'healthcare' | 'hospitality' | 'other';
 }
-
-export type JobType = 'all' | 'internal' | 'international';
-export type JobLocation = 'all' | 'kenya' | 'qatar' | 'uae' | 'saudi arabia' | 'bahrain';

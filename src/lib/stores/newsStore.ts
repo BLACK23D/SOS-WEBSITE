@@ -17,42 +17,103 @@ export interface NewsItem {
 const newsItems: NewsItem[] = [
   {
     id: 1,
-    title: 'Expanding Opportunities in the Middle East Healthcare Sector',
-    description:
-      'New healthcare positions available in UAE and Saudi Arabia with competitive packages for medical professionals.',
-    date: '2025-03-14',
+    title: 'Multiple Job Opportunities in Qatar and Kuwait',
+    description: 'Various positions available including cleaners, baristas, nurses, receptionists, and more with competitive salaries.',
+    date: '2025-04-04',
     category: 'International Jobs',
     imageUrl: '/images/services/international.webp',
     featured: true,
-    author: 'Sarah Johnson',
-    tags: ['Healthcare', 'UAE', 'Saudi Arabia', 'Medical'],
+    author: 'SOS Recruitment Team',
+    tags: ['Qatar', 'Kuwait', 'Healthcare', 'Hospitality', 'Safety', 'Transportation'],
     content: `
-      SOS Recruitment is proud to announce multiple new opportunities in the healthcare sector across the Middle East region. These positions offer exceptional benefits and career growth potential.
+      ## Cleaner Positions - Qatar
+      - Salary: 1000 QR
+      - Requirements:
+        - CV
+        - Passport
+        - Any other relevant documents
 
-      ## Available Positions
-      - Medical Specialists
-      - Registered Nurses
-      - Healthcare Administrators
-      - Medical Laboratory Technologists
-      
-      ## Key Benefits
-      - Competitive tax-free salaries
-      - Housing allowance
-      - Transportation allowance
-      - Annual flight tickets
-      - Comprehensive medical insurance
-      - Family relocation support
-      
-      ## Requirements
-      - Relevant qualifications and certifications
-      - Minimum 3-5 years experience
-      - English proficiency
-      - Willingness to relocate
-      
-      ## How to Apply
-      Interested candidates should submit their applications through our online portal. Our recruitment team will review all applications and contact qualified candidates for initial interviews.
+      ## Barista Position - Kuwait
+      - Salary: 150 KD
+      - Requirements:
+        - CV
+        - Passport
+        - Relevant experience
 
-      Don't miss this opportunity to advance your healthcare career in the Middle East. Apply now!
+      ## Nursing Positions - Qatar
+      - Salary: QAR 5,700
+      - Requirements:
+        - Well-aligned resume
+        - Diploma/Degree in Nursing
+        - Valid Nursing Council Certificate
+        - Valid Passport
+        - Police Clearance Certificate
+        - 2+ Years Experience (Pediatric/Medical-Surgical Unit or Pediatric ICU)
+
+      ## Receptionist - Qatar
+      - Salary: 1600 QR
+      - Requirements:
+        - CV
+        - Passport
+        - Educational documents
+        - Relevant documents
+
+      ## Safety Officers - Qatar
+      - Salary: 3000 QR
+      - Requirements:
+        - Nebosh IGC or equivalent
+        - OSHA or equivalent safety certification
+        - First Aid and CPR certification
+        - Passport
+        - Good conduct
+        - CV
+      - Benefits:
+        - Food
+        - Transport
+        - Accommodation
+        - Medical
+
+      ## Car Washers - Qatar
+      - Salary: 1200 QR
+      - Requirements:
+        - Passport
+        - CV
+        - Good Conduct
+      - Benefits:
+        - Food
+        - Transport
+        - Accommodation
+
+      ## Travel Butler - Qatar
+      - Salary: 4,500 QR
+      - Location: Luxury Palace
+      - Requirements:
+        - Excellent etiquette & hospitality skills
+        - Passport & updated CV
+        - Previous experience in luxury service is a plus
+
+      ## Delivery Motorbike Riders - Qatar
+      - Salary: 1650 QR
+      - Requirements:
+        - CV
+        - Passport
+        - Valid driving license
+
+      ## Heavy Bus Drivers - Qatar
+      - Salary: 2200 QR
+      - Requirements:
+        - Valid Passport
+        - Updated CV
+        - Valid Driving License (Heavy or Light)/GCC
+
+      ## Light Taxi Drivers - Qatar
+      - Salary: 1800 QR
+      - Requirements:
+        - Valid Passport
+        - Updated CV
+        - Valid Driving License (Heavy or Light)/GCC
+
+      For all positions, interested candidates should submit their applications through our online portal. Our recruitment team will review all applications and contact qualified candidates for initial interviews.
     `
   },
   {

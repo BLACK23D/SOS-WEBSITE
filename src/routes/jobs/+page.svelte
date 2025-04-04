@@ -1,9 +1,32 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
   import JobList from '$lib/components/jobs/JobList.svelte';
+  import JobFilter from '$lib/components/jobs/JobFilter.svelte';
   import type { PageData } from './$types';
+  import type { JobType, JobLocation } from '$lib/types/job';
 
   export let data: PageData;
+  
+  let filteredJobs = data.jobs;
+  let selectedType: JobType = 'all';
+  let selectedLocation: JobLocation = 'all';
+
+  function handleFilterChange(type: JobType, location: JobLocation) {
+    selectedType = type;
+    selectedLocation = location;
+    filterJobs();
+  }
+
+  function filterJobs() {
+    filteredJobs = data.jobs.filter((job) => {
+      const matchesType = selectedType === 'all' || job.type === selectedType;
+      const matchesLocation = selectedLocation === 'all' || job.location === selectedLocation;
+      return matchesType && matchesLocation;
+    });
+  }
+
+  // Initial filter
+  filterJobs();
 
   const jobCategories = [
     {
@@ -65,22 +88,15 @@
   <!-- Job Listings -->
   <div class="container mx-auto px-4 py-16">
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
-      <div class="flex justify-between items-center mb-8">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Available Positions</h2>
-        <div class="flex gap-4">
-          <button
-            class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-          >
-            Filter
-          </button>
-          <button
-            class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-          >
-            Sort
-          </button>
-        </div>
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Available Positions</h2>
+        <JobFilter
+          {selectedType}
+          {selectedLocation}
+          onFilterChange={handleFilterChange}
+        />
       </div>
-      <JobList jobs={data.jobs} />
+      <JobList jobs={filteredJobs} />
     </div>
   </div>
 </div>

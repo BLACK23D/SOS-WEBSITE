@@ -1,15 +1,18 @@
-import type { PageServerLoad } from './$types';
-import type { Job } from '$lib/types/job';
-import { formatSalary } from '$lib/utils/format';
+import type { Job, JobLocation } from '$lib/types/job';
 
-// This would typically come from a database
-const jobs: Job[] = [
+function formatSalary(amount: string, location: JobLocation): string {
+  const value = amount.replace(/[^0-9]/g, '');
+  const currency = location === 'Qatar' ? 'QR' : 'KD';
+  return `${value} ${currency}`;
+}
+
+export const jobs: Job[] = [
   {
     id: '1',
     title: 'Cleaners',
     location: 'Qatar',
     type: 'international',
-    salary: formatSalary('1000QR'),
+    salary: formatSalary('1000', 'Qatar'),
     description: 'Immediate openings for cleaners in Qatar with attractive benefits.',
     requirements: [
       'CV',
@@ -27,8 +30,9 @@ const jobs: Job[] = [
     id: '2',
     title: 'Barista',
     location: 'Kuwait',
+    category: 'hospitality',
     type: 'international',
-    salary: formatSalary('150KD'),
+    salary: formatSalary('150', 'Kuwait'),
     description: 'Urgently hiring baristas for positions in Kuwait.',
     requirements: [
       'CV',
@@ -47,7 +51,8 @@ const jobs: Job[] = [
     title: 'Nurses',
     location: 'Qatar',
     type: 'international',
-    salary: formatSalary('5700QR'),
+    category: 'healthcare',
+    salary: formatSalary('5700', 'Qatar'),
     description: 'Seeking qualified nurses for medical facilities in Qatar.',
     requirements: [
       'Well-aligned resume',
@@ -70,7 +75,7 @@ const jobs: Job[] = [
     title: 'Receptionist',
     location: 'Qatar',
     type: 'international',
-    salary: formatSalary('1600QR'),
+    salary: formatSalary('1600', 'Qatar'),
     description: 'Opening for receptionist position in Qatar.',
     requirements: [
       'CV',
@@ -90,7 +95,7 @@ const jobs: Job[] = [
     title: 'Safety Officers',
     location: 'Qatar',
     type: 'international',
-    salary: formatSalary('3000QR'),
+    salary: formatSalary('3000', 'Qatar'),
     description: 'Safety officer positions available with comprehensive benefits package.',
     requirements: [
       'Nebosh IGC or equivalent',
@@ -113,7 +118,7 @@ const jobs: Job[] = [
     title: 'Car Washers',
     location: 'Qatar',
     type: 'international',
-    salary: formatSalary('1200QR'),
+    salary: formatSalary('1200', 'Qatar'),
     description: 'Immediate openings for car washers with accommodation provided.',
     requirements: [
       'Passport',
@@ -132,7 +137,7 @@ const jobs: Job[] = [
     title: 'Travel Butler',
     location: 'Qatar',
     type: 'international',
-    salary: formatSalary('4500QR'),
+    salary: formatSalary('4500', 'Qatar'),
     description: 'Exclusive opportunity to work as a Travel Butler in a prestigious palace.',
     requirements: [
       'Excellent etiquette & hospitality skills',
@@ -151,7 +156,7 @@ const jobs: Job[] = [
     title: 'Delivery Motorbike Riders',
     location: 'Qatar',
     type: 'international',
-    salary: formatSalary('1650QR'),
+    salary: formatSalary('1650', 'Qatar'),
     description: 'Hiring delivery motorbike riders in Qatar.',
     requirements: [
       'CV',
@@ -170,7 +175,7 @@ const jobs: Job[] = [
     title: 'Heavy Bus Drivers',
     location: 'Qatar',
     type: 'international',
-    salary: formatSalary('2200QR'),
+    salary: formatSalary('2200', 'Qatar'),
     description: 'Join a reputable company in Qatar as a Heavy Bus Driver.',
     requirements: [
       'Valid Passport',
@@ -189,7 +194,7 @@ const jobs: Job[] = [
     title: 'Light Taxi Drivers',
     location: 'Qatar',
     type: 'international',
-    salary: formatSalary('1800QR'),
+    salary: formatSalary('1800', 'Qatar'),
     description: 'Opportunities available for Light Taxi Drivers in Qatar.',
     requirements: [
       'Valid Passport',
@@ -204,25 +209,3 @@ const jobs: Job[] = [
     postedDate: '2025-04-04'
   }
 ];
-
-// Pagination settings
-const ITEMS_PER_PAGE = 10;
-
-export const load: PageServerLoad = async ({ url }) => {
-  const page = Number(url.searchParams.get('page')) || 1;
-  const start = (page - 1) * ITEMS_PER_PAGE;
-  const end = start + ITEMS_PER_PAGE;
-  
-  const paginatedJobs = jobs.slice(start, end);
-  const totalPages = Math.ceil(jobs.length / ITEMS_PER_PAGE);
-
-  return {
-    jobs: paginatedJobs,
-    pagination: {
-      currentPage: page,
-      totalPages,
-      hasNextPage: page < totalPages,
-      hasPrevPage: page > 1
-    }
-  };
-};

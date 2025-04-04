@@ -140,7 +140,12 @@
         </button>
 
         <div class="flex items-center space-x-4">
-          <Button href="/contact" variant="primary">DROP YOUR CV</Button>
+          <a
+            href="/drop-cv"
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+          >
+            Drop CV
+          </a>
         </div>
       </div>
 
@@ -233,7 +238,12 @@
           </div>
         {/each}
         <div class="px-3 py-2">
-          <Button href="/contact" variant="primary" className="w-full justify-center">DROP YOUR CV</Button>
+          <a
+            href="/drop-cv"
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+          >
+            Drop CV
+          </a>
         </div>
       </div>
     </div>

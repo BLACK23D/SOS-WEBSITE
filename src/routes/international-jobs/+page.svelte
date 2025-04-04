@@ -1,70 +1,77 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import Button from '$lib/components/shared/Button.svelte';
+  import { onMount } from 'svelte';
+  import JobCard from '$lib/components/jobs/JobCard.svelte';
+  import JobFilter from '$lib/components/jobs/JobFilter.svelte';
+  import LoadingSpinner from '$lib/components/shared/LoadingSpinner.svelte';
+  import ErrorAlert from '$lib/components/shared/ErrorAlert.svelte';
+  import { generateJobSchema } from '$lib/utils/jobSchema';
+  import type { PageData } from './$types';
+  import type { JobType, JobLocation } from '$lib/types/jobTypes';
+  import type { Job } from '$lib/types/job';
 
-  const jobs = [
-    {
-      title: 'Healthcare Workers - Saudi Arabia',
-      location: 'Saudi Arabia',
-      type: 'Full-time',
-      description:
-        'Join leading healthcare facilities in Saudi Arabia. Seeking qualified nurses and medical professionals.',
-      requirements: [
-        "Bachelor's degree in Nursing or related field",
-        'Minimum 2 years experience',
-        'Valid nursing license',
-        'English proficiency'
-      ]
-    },
-    {
-      title: 'Construction Workers - Qatar',
-      location: 'Qatar',
-      type: 'Contract',
-      description: 'Major construction projects seeking skilled workers for immediate deployment.',
-      requirements: [
-        'Relevant trade certification',
-        '3+ years experience',
-        'Physical fitness',
-        'Basic English communication'
-      ]
-    },
-    {
-      title: 'Hospitality Staff - Dubai',
-      location: 'UAE',
-      type: 'Full-time',
-      description:
-        'Luxury hotels in Dubai hiring for various positions including front desk, housekeeping, and F&B.',
-      requirements: [
-        'Hospitality experience',
-        'Customer service skills',
-        'English proficiency',
-        'Professional appearance'
-      ]
-    }
-  ];
+  export let data: PageData;
+  const { jobs } = data;
+
+  let isLoading = false;
+  let error: string | null = null;
+  let filteredJobs = jobs;
+  let selectedType: JobType = 'international';
+  let selectedLocation: JobLocation = 'all';
+
+  // Generate JSON-LD schema for all jobs
+  const jobSchemas = jobs.map((job, index) => ({
+    '@type': 'ListItem',
+    'position': index + 1,
+    'item': generateJobSchema(job)
+  }));
+
+  function handleFilterChange(type: JobType, location: JobLocation) {
+    selectedType = type;
+    selectedLocation = location;
+    filterJobs();
+  }
+
+  function filterJobs() {
+    filteredJobs = jobs.filter((job) => {
+      const matchesType = selectedType === 'international';
+      const matchesLocation = selectedLocation === 'all' || job.location === selectedLocation;
+      return matchesType && matchesLocation;
+    });
+  }
 </script>
 
 <svelte:head>
-  <title>International Jobs - SOS Recruitment</title>
+  <title>International Jobs in Qatar & Kuwait - SOS Recruitment</title>
   <meta
     name="description"
-    content="Explore international job opportunities with SOS Recruitment. Find your next career abroad."
+    content="Find international job opportunities in Qatar and Kuwait. Apply now for positions in healthcare, hospitality, transportation, and more. All jobs include food, transport, and accommodation."
   />
+  
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": jobSchemas
+    })}
+  </script>
 </svelte:head>
 
 <div class="min-h-screen py-12 bg-gray-50 dark:bg-gray-900">
   <div class="container mx-auto px-4">
     <!-- Hero Section -->
     <div class="text-center mb-12" in:fade>
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">International Job Opportunities</h1>
-      <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-        Take your career global with our international job placements. We connect talented
-        professionals with opportunities worldwide.
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+        International Job Opportunities
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+        Discover exciting career opportunities abroad with comprehensive benefits including food, transport, and accommodation.
       </p>
-      <div class="flex justify-center">
+      <div class="flex justify-center space-x-4">
         <a
-          href="/international-jobs/apply"
-          class="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-primary hover:bg-primary-600 rounded-lg transition duration-150 ease-in-out transform hover:scale-105"
+          href="/apply/international"
+          class="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-primary-500 hover:bg-primary-600 rounded-lg transition duration-150 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
         >
           Apply Now
           <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,65 +86,70 @@
       </div>
     </div>
 
-    <!-- Jobs Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-      {#each jobs as job}
+    <!-- Job Filter -->
+    <JobFilter
+      {selectedType}
+      {selectedLocation}
+      onFilterChange={handleFilterChange}
+    />
+
+    <!-- Loading State -->
+    {#if isLoading}
+      <div class="flex justify-center py-12" in:fade>
+        <LoadingSpinner size="lg" />
+      </div>
+    {:else if error}
+      <ErrorAlert message={error} />
+    {:else}
+      <!-- No Results State -->
+      {#if filteredJobs.length === 0}
         <div
-          class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105"
-          in:fade={{ delay: 200 }}
+          class="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg"
+          in:fade
         >
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">{job.title}</h3>
-            <div class="flex items-center text-gray-600 dark:text-gray-400 mb-4">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              <span>{job.location}</span>
-              <span class="mx-2">•</span>
-              <span>{job.type}</span>
-            </div>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">{job.description}</p>
-            <div class="space-y-2">
-              <h4 class="font-medium">Requirements:</h4>
-              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                {#each job.requirements as requirement}
-                  <li>{requirement}</li>
-                {/each}
-              </ul>
-            </div>
-          </div>
-          <div class="px-6 py-4 bg-gray-50 dark:bg-gray-700">
-            <a
-              href="/international-jobs/apply"
-              class="block w-full text-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-600 transition duration-150 ease-in-out"
-            >
-              Apply for this Position
-            </a>
-          </div>
+          <svg
+            class="w-16 h-16 mx-auto mb-4 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            No jobs found
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400">
+            Try adjusting your filters or check back later for new opportunities.
+          </p>
         </div>
-      {/each}
-    </div>
+      {:else}
+        <!-- Jobs Grid -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"
+          role="list"
+          aria-label="Job Listings"
+        >
+          {#each filteredJobs as job (job.id)}
+            <JobCard {job} />
+          {/each}
+        </div>
+      {/if}
+    {/if}
 
     <!-- Call to Action -->
-    <div class="bg-primary text-white rounded-lg p-8 text-center" in:fade={{ delay: 400 }}>
+    <div class="bg-primary-500 text-white rounded-lg p-8 text-center mt-12" in:fade={{ delay: 400 }}>
       <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to Start Your International Career?</h2>
       <p class="text-lg mb-6 max-w-2xl mx-auto">
         Submit your application today and take the first step towards your dream job abroad.
       </p>
       <a
-        href="/international-jobs/apply"
-        class="inline-flex items-center px-6 py-3 text-lg font-medium bg-white text-primary rounded-lg hover:bg-gray-100 transition duration-150 ease-in-out"
+        href="/apply/international"
+        class="inline-flex items-center px-6 py-3 text-lg font-medium bg-white text-primary-500 rounded-lg hover:bg-gray-100 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-500"
       >
         Apply Now
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -153,9 +165,20 @@
   </div>
 </div>
 
-<style>
+<style lang="postcss">
   /* Smooth scroll behavior */
   :global(html) {
     scroll-behavior: smooth;
+  }
+
+  /* Optimize touch targets on mobile */
+  @media (max-width: 640px) {
+    a {
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 </style>
