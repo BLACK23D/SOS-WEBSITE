@@ -90,6 +90,22 @@
   ];
 </script>
 
+<svelte:head>
+  <title>Job Listings - SOS Recruitment</title>
+  <meta name="description" content="Browse our current job openings in Kenya and internationally. Find opportunities in healthcare, hospitality, transport, cleaning services, and safety & security." />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Job Listings - SOS Recruitment" />
+  <meta property="og:description" content="Browse our current job openings in Kenya and internationally. Find opportunities in healthcare, hospitality, transport, cleaning services, and safety & security." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sos-recruitment.com/jobs" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Job Listings - SOS Recruitment" />
+  <meta name="twitter:description" content="Browse our current job openings in Kenya and internationally. Find opportunities in healthcare, hospitality, transport, cleaning services, and safety & security." />
+</svelte:head>
+
 <div class="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800" in:fade>
   <!-- Hero Section -->
   <div class="relative bg-primary py-16">
@@ -122,13 +138,15 @@
   <!-- Job Listings -->
   <div class="container mx-auto px-4 py-16">
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Available Positions</h2>
-        <JobFilter
-          {selectedType}
-          {selectedLocation}
-          onFilterChange={handleFilterChange}
-        />
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Available Positions</h2>
+        <div class="w-full md:w-auto">
+          <JobFilter
+            {selectedType}
+            {selectedLocation}
+            onFilterChange={handleFilterChange}
+          />
+        </div>
       </div>
       <JobList jobs={filteredJobs} />
     </div>

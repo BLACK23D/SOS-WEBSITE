@@ -9,6 +9,7 @@
   import { setupScrollAnimations } from '$lib/utils/scroll';
 
   let isDarkMode = false;
+  let mounted = false;
 
   // SEO metadata
   const siteTitle = 'SOS Recruitment - Your Gateway to Global Opportunities';
@@ -16,9 +17,13 @@
     'Leading recruitment agency connecting talented professionals with international and local job opportunities. Find your dream job today.';
 
   function updateTheme() {
-    if (typeof document !== 'undefined') {
+    if (typeof document !== 'undefined' && mounted) {
       document.documentElement.classList.toggle('dark', isDarkMode);
       localStorage.setItem('darkMode', isDarkMode.toString());
+      
+      // Force a re-render of the page by toggling a class
+      document.body.classList.remove('theme-updated');
+      setTimeout(() => document.body.classList.add('theme-updated'), 0);
     }
   }
 
@@ -38,8 +43,20 @@
   onMount(() => {
     // Theme setup
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    isDarkMode = localStorage.getItem('darkMode') === 'true' || prefersDark;
+    const storedTheme = localStorage.getItem('darkMode');
+    isDarkMode = storedTheme !== null ? storedTheme === 'true' : prefersDark;
+    mounted = true;
     updateTheme();
+    
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleThemeChange = (e: MediaQueryListEvent) => {
+      if (localStorage.getItem('darkMode') === null) {
+        isDarkMode = e.matches;
+        updateTheme();
+      }
+    };
+    mediaQuery.addEventListener('change', handleThemeChange);
 
     // Preload critical assets
     const links = document.head.querySelectorAll('link[rel="preload"]');
@@ -51,6 +68,8 @@
     const cleanup = setupScrollAnimations();
     return () => {
       if (cleanup) cleanup();
+      mediaQuery.removeEventListener('change', handleThemeChange);
+      mounted = false;
     };
   });
 </script>
@@ -104,6 +123,9 @@
 </div>
 
 <style>
+  :global(.theme-updated) {
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
   :global(html) {
     scroll-behavior: smooth;
   }

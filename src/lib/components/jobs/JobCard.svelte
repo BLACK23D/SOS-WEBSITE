@@ -1,5 +1,4 @@
-  git 
-updates<script lang="ts">
+<script lang="ts">
   import type { Job } from '$lib/types/job';
   import { fade } from 'svelte/transition';
   import { formatSalary } from '$lib/utils/format';
@@ -8,7 +7,7 @@ updates<script lang="ts">
   export let job: Job;
 
   // Format salary with proper spacing
-  $: formattedSalary = formatSalary(job.salary || '');
+  $: formattedSalary = job.salary ? formatSalary(job.salary) : 'Not specified';
 
   // Get country code for flag
   $: countryCode = job.location.toLowerCase() === 'qatar' ? 'qa' : 'kw';
@@ -89,7 +88,7 @@ updates<script lang="ts">
       <div class="flex flex-wrap gap-4">
         {#if job.type === 'international'}
           <a
-            href="/apply/international?position={encodeURIComponent(job.title)}&employer={encodeURIComponent(job.employer || '')}"
+            href="/apply/international?position={encodeURIComponent(job.title)}&employer={encodeURIComponent(job.employer ?? 'Not specified')}"
             class="flex-1 inline-flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
           >
             Apply Now
@@ -97,7 +96,7 @@ updates<script lang="ts">
           </a>
         {:else}
           <a
-            href="/apply/local?position={encodeURIComponent(job.title)}&employer={encodeURIComponent(job.employer || '')}"
+            href="/apply/local?position={encodeURIComponent(job.title)}&employer={encodeURIComponent(job.employer ?? 'Not specified')}"
             class="flex-1 inline-flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
           >
             Apply Now

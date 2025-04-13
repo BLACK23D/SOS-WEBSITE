@@ -1,10 +1,16 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
+  import { onMount } from 'svelte';
   import ServiceCard from '$lib/components/services/ServiceCard.svelte';
   import internationalImg from '$lib/assets/images/services/international.webp';
   import localImg from '$lib/assets/images/services/local.webp';
   import cvImg from '$lib/assets/images/services/cv.webp';
   import counselingImg from '$lib/assets/images/services/counseling.webp';
+
+  let mounted = false;
+  onMount(() => {
+    mounted = true;
+  });
 
   const services = [
     {
@@ -50,24 +56,53 @@
   ];
 </script>
 
-<section class="py-20 bg-accent/10">
-  <div class="container mx-auto px-4">
+<section class="py-20 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-gradient-to-b from-accent/5 via-accent/10 to-accent/5">
+    <div class="absolute inset-0 opacity-30">
+      <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1" fill="currentColor" class="text-accent" />
+        </pattern>
+        <rect width="100" height="100" fill="url(#dots)" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 relative">
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold text-primary dark:text-white mb-4">Our Services</h2>
-      <p class="text-lg text-gray-600 dark:text-gray-200">
-        Comprehensive recruitment solutions tailored to your needs
-      </p>
+      {#if mounted}
+        <div in:fly={{ y: 50, duration: 1000 }}>
+          <h2 class="text-4xl font-bold mb-4 relative inline-block">
+            Our Services
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-primary/20"></div>
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-200 max-w-2xl mx-auto mt-6">
+            Comprehensive recruitment solutions tailored to your needs. We provide end-to-end support
+            for your career journey.
+          </p>
+        </div>
+      {/if}
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {#each services as service, i}
-        <div
-          in:fly={{ y: 50, duration: 500, delay: i * 200 }}
-          out:fade
-        >
-          <ServiceCard {...service} />
-        </div>
+        {#if mounted}
+          <div
+            in:fly={{ y: 50, duration: 1000, delay: 200 + i * 200 }}
+            class="group relative"
+          >
+            <!-- Decorative background blur -->
+            <div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative">
+              <ServiceCard {...service} />
+            </div>
+          </div>
+        {/if}
       {/each}
     </div>
+
+    <!-- Bottom Pattern -->
+    <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
   </div>
 </section>

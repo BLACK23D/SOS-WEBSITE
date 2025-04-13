@@ -1,6 +1,6 @@
 <script lang="ts">
+  import ServicePageLayout from '$lib/components/services/ServicePageLayout.svelte';
   import Button from '$lib/components/shared/Button.svelte';
-  import { fade } from 'svelte/transition';
 
   const features = [
     {
@@ -42,41 +42,20 @@
   ];
 </script>
 
-<div in:fade>
-  <!-- Hero Section -->
-  <div class="relative bg-[#174e4f] text-white">
-    <div class="absolute inset-0 z-0">
-      <img
-        src="/images/services/career-hero.webp"
-        alt="Career Counseling"
-        class="w-full h-full object-cover opacity-20"
-      />
-    </div>
-    <div class="relative z-10 container mx-auto px-4 py-20 md:py-32">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-          Career Counseling – Find Your True Career Path
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-100 mb-8">
-          Confused about which career path to take? Let our career experts help you make the right
-          career decisions based on your skills, interests, and job market trends.
-        </p>
-        <Button
-          href="https://wa.me/254736887668?text=Hi%20SOS%20Recruitment%2C%20I'm%20interested%20in%20career%20counseling%20services"
-          variant="secondary"
-        >
-          Book a Session
-        </Button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Content -->
+<ServicePageLayout
+  title="Career Counseling – Find Your True Career Path"
+  description="Confused about which career path to take? Let our career experts help you make the right career decisions based on your skills, interests, and job market trends."
+  heroImage="/images/services/counseling.webp"
+  heroAlt="Career Counseling"
+  ctaText="Book a Session"
+  ctaLink="https://wa.me/254736887668?text=Hi%20SOS%20Recruitment%2C%20I'm%20interested%20in%20career%20counseling%20services"
+  ctaVariant="secondary"
+>
   <div class="container mx-auto px-4 py-16">
     <!-- Service Description -->
     <div class="max-w-3xl mx-auto mb-16">
       <h2 class="text-3xl font-bold mb-6">Professional Career Guidance</h2>
-      <p class="text-lg text-gray-600 mb-6">
+      <p class="mb-6">
         Choosing the right career can be overwhelming. We provide one-on-one career counseling,
         helping job seekers identify opportunities that match their goals and strengths.
       </p>
@@ -85,9 +64,9 @@
     <!-- Features Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
       {#each features as feature}
-        <div class="p-6 rounded-lg bg-gray-50">
-          <h3 class="text-xl font-bold text-[#174e4f] mb-3">{feature.title}</h3>
-          <p class="text-gray-600">{feature.description}</p>
+        <div class="p-6 rounded">
+          <h3 class="text-xl font-bold mb-3">{feature.title}</h3>
+          <p>{feature.description}</p>
         </div>
       {/each}
     </div>
@@ -96,7 +75,7 @@
     <div class="mb-16">
       <h2 class="text-3xl font-bold text-center mb-12">Our Career Counseling Process</h2>
       <div class="relative">
-        <div class="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 hidden md:block"></div>
+        <div class="absolute top-1/2 left-0 right-0 h-0.5 hidden md:block"></div>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div class="relative text-center">
             <div
@@ -160,4 +139,4 @@
       </Button>
     </div>
   </div>
-</div>
+</ServicePageLayout>

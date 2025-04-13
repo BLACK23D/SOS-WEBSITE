@@ -3,10 +3,22 @@
   import { onMount } from 'svelte';
   let visible = false;
 
-  onMount(() => {
-    const handleScroll = () => {
-      visible = window.scrollY > 400;
+  function debounce(func: Function, wait: number) {
+    let timeout: ReturnType<typeof setTimeout>;
+    return function executedFunction(...args: any[]) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
     };
+  }
+
+  onMount(() => {
+    const handleScroll = debounce(() => {
+      visible = window.scrollY > 400;
+    }, 150);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   });

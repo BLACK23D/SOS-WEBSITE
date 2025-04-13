@@ -260,7 +260,7 @@ const newsItems: NewsItem[] = [
       "Learn essential digital marketing skills needed in today's job market with our expert-led workshop.",
     date: '2025-03-10',
     category: 'Events',
-    imageUrl: '/images/services/workshop.webp',
+    imageUrl: '/images/services/counseling.webp',
     author: 'Lisa Kamau',
     tags: ['Digital Marketing', 'Workshop', 'Skills'],
     content: `
@@ -347,6 +347,92 @@ const newsItems: NewsItem[] = [
       - Competitive benefits
       
       Contact SOS Recruitment to learn more about opportunities in the hospitality sector.
+    `
+  },
+  {
+    id: 7,
+    title: 'Healthcare Professional Recruitment Drive',
+    description:
+      'Major healthcare facilities in Kenya and the Middle East are seeking qualified medical professionals.',
+    date: '2025-03-08',
+    category: 'Healthcare',
+    imageUrl: '/images/services/counseling.webp',
+    author: 'Dr. Sarah Kimani',
+    tags: ['Healthcare', 'Medical', 'Nursing', 'International'],
+    content: `
+      We are currently recruiting for various healthcare positions both locally and internationally. This recruitment drive aims to place qualified medical professionals in leading healthcare facilities.
+
+      ## Available Positions
+      ### Nursing Roles
+      - ICU/CCU Nurses
+      - General Ward Nurses
+      - Pediatric Nurses
+      - Emergency Room Nurses
+      
+      ### Medical Specialists
+      - Cardiologists
+      - Pediatricians
+      - General Practitioners
+      - Dentists
+      
+      ### Support Staff
+      - Laboratory Technicians
+      - Radiographers
+      - Pharmacists
+      - Medical Records Officers
+      
+      ## Requirements
+      - Valid professional licenses
+      - Minimum 2 years experience
+      - Strong English communication skills
+      - Relevant certifications
+      
+      ## Benefits
+      - Competitive salaries
+      - Housing allowance
+      - Medical coverage
+      - Professional development
+      
+      Contact our healthcare recruitment specialists to learn more about these opportunities.
+    `
+  },
+  {
+    id: 8,
+    title: 'Success Stories: From Job Seeker to Career Success',
+    description:
+      'Read inspiring stories of candidates who found their dream jobs through SOS Recruitment.',
+    date: '2025-03-07',
+    category: 'Success Stories',
+    imageUrl: '/images/services/cv.webp',
+    author: 'Jane Njeri',
+    tags: ['Success Stories', 'Career Growth', 'Inspiration'],
+    content: `
+      We are proud to share the success stories of individuals who have transformed their careers through our recruitment services.
+
+      ## Featured Success Stories
+
+      ### From Local Graduate to International Professional
+      Mary Wambui, a fresh graduate from the University of Nairobi, secured a position as a Software Developer in Dubai through our international placement program.
+      
+      ### Career Transition Success
+      John Kamau successfully transitioned from a teaching career to a corporate training role, doubling his salary and finding greater job satisfaction.
+      
+      ### Rising Through the Ranks
+      Sarah Omondi started as an entry-level accountant and, through our career development program, is now a Finance Manager at a leading multinational company.
+      
+      ## Key Success Factors
+      - Personalized career guidance
+      - Professional development support
+      - Strategic job placement
+      - Ongoing mentorship
+      
+      ## Your Success Story Starts Here
+      - Professional CV review
+      - Interview preparation
+      - Career counseling
+      - Job market insights
+      
+      Contact us to start your journey to career success.
     `
   }
 ];

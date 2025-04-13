@@ -1,7 +1,12 @@
 <!-- Team component -->
 <script lang="ts">
-  import { fade } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
   import { onMount } from 'svelte';
+
+  let mounted = false;
+  onMount(() => {
+    mounted = true;
+  });
 
   const teamMembers = [
     {
@@ -62,27 +67,51 @@
   }
 </script>
 
-<section class="py-20 bg-gray-50 dark:bg-gray-800">
-  <div class="container mx-auto px-4">
+<section class="py-20 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-100/50 to-gray-50 dark:from-gray-900 dark:via-gray-800/50 dark:to-gray-900">
+    <div class="absolute inset-0 opacity-30">
+      <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <pattern id="team-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5" class="text-primary/20"/>
+        </pattern>
+        <rect width="100" height="100" fill="url(#team-grid)" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 relative">
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Our Team</h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-        Meet the dedicated professionals behind SOS Recruitment's success
-      </p>
+      {#if mounted}
+        <div in:fly={{ y: 50, duration: 1000 }}>
+          <h2 class="text-4xl font-bold mb-4 relative inline-block">
+            Our Team
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-primary/20"></div>
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-6">
+            Meet the dedicated professionals behind SOS Recruitment's success.
+            Together, we make your career dreams a reality.
+          </p>
+        </div>
+      {/if}
     </div>
 
-    <div class="flex flex-nowrap gap-4 overflow-x-auto pb-4 snap-x">
+    <div class="flex flex-nowrap gap-6 overflow-x-auto pb-4 snap-x">
       {#each teamMembers as member, i}
-        <div 
-          class="flex-none w-72 snap-start bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2"
-          in:fade={{ duration: 300, delay: i * 150 }}
-        >
-          <div class="relative aspect-w-4 aspect-h-5">
+        {#if mounted}
+          <div 
+            in:fly={{ y: 50, duration: 1000, delay: 400 + i * 200 }}
+            class="group relative flex-none w-72 snap-start">
+            <!-- Decorative background blur -->
+            <div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2">
+          <div class="relative aspect-w-4 aspect-h-5 group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50"></div>
             <div class="absolute inset-0 bg-gray-200 animate-pulse" class:hidden={loaded[i]}></div>
             <img
               src={member.image}
               alt={member.name}
-              class="w-full h-full object-cover transition-opacity duration-300"
+              class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
               class:opacity-0={!loaded[i]}
               class:opacity-100={loaded[i]}
               on:load={() => handleImageLoad(i)}
@@ -90,17 +119,17 @@
             />
           </div>
           
-          <div class="p-6">
+          <div class="p-6 relative z-10">
             <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{member.name}</h3>
             <p class="text-primary-600 dark:text-primary-400 mb-3">{member.role}</p>
             <p class="text-gray-600 dark:text-gray-300 mb-4 min-h-[3rem]">{member.bio}</p>
             
-            <div class="flex items-center justify-center space-x-6">
+            <div class="flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
               <a
                 href={member.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center justify-center w-8 h-8"
+                class="text-gray-400 hover:text-primary transition-colors flex items-center justify-center w-8 h-8 hover:scale-110 transform duration-200"
               >
                 <span class="sr-only">LinkedIn</span>
                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -111,7 +140,7 @@
                 href={member.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center justify-center w-8 h-8"
+                class="text-gray-400 hover:text-primary transition-colors flex items-center justify-center w-8 h-8 hover:scale-110 transform duration-200"
               >
                 <span class="sr-only">Twitter</span>
                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -122,7 +151,7 @@
                 href={member.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center justify-center w-8 h-8"
+                class="text-gray-400 hover:text-primary transition-colors flex items-center justify-center w-8 h-8 hover:scale-110 transform duration-200"
               >
                 <span class="sr-only">Instagram</span>
                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -132,8 +161,13 @@
             </div>
           </div>
         </div>
-      {/each}
+      </div>
+    {/if}
+  {/each}
     </div>
+
+    <!-- Bottom Pattern -->
+    <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent dark:from-gray-900"></div>
   </div>
 </section>
 

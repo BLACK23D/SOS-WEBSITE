@@ -1,6 +1,7 @@
 <script lang="ts">
+  import ServicePageLayout from '$lib/components/services/ServicePageLayout.svelte';
+  import ServiceFeature from '$lib/components/services/ServiceFeature.svelte';
   import Button from '$lib/components/shared/Button.svelte';
-  import { fade } from 'svelte/transition';
 
   const positions = [
     'Drivers',
@@ -15,9 +16,14 @@
   const features = [
     {
       title: 'Quick Hiring Process',
-      description: 'We match qualified candidates with immediate job openings.'
+      description: 'We match qualified candidates with immediate job openings.',
+      icon: 'briefcase'
     },
-    { title: 'Diverse Job Opportunities', description: 'We recruit across various industries.' },
+    {
+      title: 'Diverse Job Opportunities',
+      description: 'We recruit across various industries.',
+      icon: 'star'
+    },
     {
       title: 'Verified Employers',
       description: 'Work with trusted companies that follow legal employment standards.'
@@ -52,34 +58,16 @@
   ];
 </script>
 
-<div in:fade>
-  <!-- Hero Section -->
-  <div class="relative bg-[#174e4f] text-white">
-    <div class="absolute inset-0 z-0">
-      <img
-        src="/images/services/local-hero.webp"
-        alt="Local Recruitment"
-        class="w-full h-full object-cover opacity-20"
-      />
-    </div>
-    <div class="relative z-10 container mx-auto px-4 py-20 md:py-32">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-          Local Recruitment – Connecting Talent with the Right Employers
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-100 mb-8">
-          Finding a job in Kenya has never been easier! We connect qualified job seekers with top
-          local employers, ensuring the right fit for both employees and businesses.
-        </p>
-        <Button
-          href="https://wa.me/254736887668?text=Hi%20SOS%20Recruitment%2C%20I'm%20interested%20in%20local%20job%20opportunities"
-          variant="secondary"
-        >
-          Apply Now
-        </Button>
-      </div>
-    </div>
-  </div>
+<ServicePageLayout
+  title="Local Recruitment – Finding the Right Talent"
+  description="Connect with top local talent. We help businesses find and hire the best candidates for their teams across Kenya."
+  heroImage="/images/services/local.webp"
+  heroAlt="Local Recruitment Services"
+  ctaText="Get Started"
+  ctaLink="https://wa.me/254736887668?text=Hi%20SOS%20Recruitment%2C%20I'm%20interested%20in%20local%20recruitment%20services"
+  ctaVariant="secondary"
+>
+
 
   <!-- Main Content -->
   <div class="container mx-auto px-4 py-16">
@@ -189,5 +177,4 @@
         Apply Today
       </Button>
     </div>
-  </div>
-</div>
+</ServicePageLayout>
