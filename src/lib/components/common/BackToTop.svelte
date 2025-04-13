@@ -20,7 +20,7 @@
 </script>
 
 <button
-  class="fixed bottom-8 right-8 bg-primary-600 text-white p-3 rounded-full shadow-lg transition-opacity duration-300 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+  class="fixed bottom-24 right-8 bg-primary-600 text-white p-3 rounded-full shadow-lg transition-opacity duration-300 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
   class:opacity-0={!visible}
   class:pointer-events-none={!visible}
   on:click={scrollToTop}
@@ -33,6 +33,6 @@
 
 <style>
   button {
-    z-index: 50;
+    z-index: 40;
   }
 </style>

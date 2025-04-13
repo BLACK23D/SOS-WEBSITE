@@ -5,6 +5,7 @@
   import CallToAction from '$lib/components/home/CallToAction.svelte';
   import Team from '$lib/components/home/Team.svelte';
   import LatestNews from '$lib/components/home/LatestNews.svelte';
+  import Map from '$lib/components/home/Map.svelte';
 </script>
 
 <svelte:head>
@@ -21,6 +22,7 @@
     <LatestNews />
     <Services />
     <Team />
+    <Map />
     <CallToAction />
   </main>
 </div>

@@ -28,30 +28,64 @@
   // Initial filter
   filterJobs();
 
+  // Helper function to determine job category
+  function getJobCategory(title: string): string {
+    const title_lower = title.toLowerCase();
+    if (title_lower.includes('nurse') || title_lower.includes('medical') || title_lower.includes('healthcare')) {
+      return 'healthcare';
+    }
+    if (title_lower.includes('barista') || title_lower.includes('waiter') || title_lower.includes('waitress') || 
+        title_lower.includes('butler') || title_lower.includes('hospitality')) {
+      return 'hospitality';
+    }
+    if (title_lower.includes('driver') || title_lower.includes('rider') || title_lower.includes('transport')) {
+      return 'transport';
+    }
+    if (title_lower.includes('cleaner') || title_lower.includes('washer')) {
+      return 'cleaning';
+    }
+    if (title_lower.includes('safety') || title_lower.includes('security')) {
+      return 'safety';
+    }
+    return 'other';
+  }
+
   const jobCategories = [
     {
       title: 'International Jobs',
-      description: 'Explore opportunities in the Middle East, Europe, and beyond',
+      description: 'Explore opportunities in Qatar, Kuwait, and beyond',
       count: data.jobs.filter(job => job.type === 'international').length,
       icon: '🌍'
     },
     {
-      title: 'Local Jobs',
-      description: 'Find the best positions within Kenya',
-      count: data.jobs.filter(job => job.type === 'local').length,
-      icon: '🏢'
-    },
-    {
       title: 'Healthcare',
-      description: 'Medical and healthcare positions worldwide',
-      count: data.jobs.filter(job => job.category === 'healthcare').length,
+      description: 'Nursing and medical positions',
+      count: data.jobs.filter(job => getJobCategory(job.title) === 'healthcare').length,
       icon: '⚕️'
     },
     {
       title: 'Hospitality',
-      description: 'Hotels, restaurants, and tourism opportunities',
-      count: data.jobs.filter(job => job.category === 'hospitality').length,
+      description: 'Barista, waitstaff, and butler positions',
+      count: data.jobs.filter(job => getJobCategory(job.title) === 'hospitality').length,
       icon: '🏨'
+    },
+    {
+      title: 'Transport',
+      description: 'Drivers and delivery positions',
+      count: data.jobs.filter(job => getJobCategory(job.title) === 'transport').length,
+      icon: '🚗'
+    },
+    {
+      title: 'Cleaning Services',
+      description: 'Cleaning and car wash positions',
+      count: data.jobs.filter(job => getJobCategory(job.title) === 'cleaning').length,
+      icon: '🧹'
+    },
+    {
+      title: 'Safety & Security',
+      description: 'Safety officer positions',
+      count: data.jobs.filter(job => getJobCategory(job.title) === 'safety').length,
+      icon: '🛡️'
     }
   ];
 </script>
@@ -70,7 +104,7 @@
       </div>
 
       <!-- Job Categories -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {#each jobCategories as category}
           <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300">
             <div class="text-4xl mb-4">{category.icon}</div>

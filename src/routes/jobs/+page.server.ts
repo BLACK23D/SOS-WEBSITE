@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import type { Job } from '$lib/types/job';
 import { formatSalary } from '$lib/utils/format';
+export const prerender = false;
 
 // This would typically come from a database
 const jobs: Job[] = [

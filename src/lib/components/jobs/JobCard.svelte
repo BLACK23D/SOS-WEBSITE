@@ -1,4 +1,5 @@
-<script lang="ts">
+  git 
+updates<script lang="ts">
   import type { Job } from '$lib/types/job';
   import { fade } from 'svelte/transition';
   import { formatSalary } from '$lib/utils/format';
@@ -14,12 +15,12 @@
 </script>
 
 <div
-  class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105 job-card"
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden job-card h-full flex flex-col"
   in:fade={{ delay: 200 }}
   role="article"
   aria-labelledby="job-title-{job.id}"
 >
-  <div class="p-6">
+  <div class="p-6 flex-grow">
     <!-- Job Header -->
     <div class="flex justify-between items-start mb-4">
       <div>
@@ -34,9 +35,9 @@
         </div>
       </div>
       <!-- Prominent Salary Display -->
-      <div class="bg-primary/10 dark:bg-primary/20 px-4 py-2 rounded-lg">
-        <div class="text-xs text-primary dark:text-primary-light uppercase font-medium">Salary</div>
-        <div class="text-lg font-bold text-primary dark:text-primary-light">{formattedSalary}</div>
+      <div class="bg-primary-100/20 dark:bg-primary-400/20 px-4 py-2 rounded-lg">
+        <div class="text-xs text-primary-700 dark:text-primary-200 uppercase font-medium">Salary</div>
+        <div class="text-lg font-bold text-primary-800 dark:text-primary-100">{formattedSalary}</div>
       </div>
     </div>
 
@@ -59,18 +60,7 @@
         </ul>
       </div>
 
-      {#if job.type === 'international' && job.benefits && job.benefits.length > 0}
-        <div class="mt-4">
-          <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Benefits:</h4>
-          <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-1">
-            {#each job.benefits as benefit}
-              <li>{benefit}</li>
-            {/each}
-          </ul>
-        </div>
-      {/if}
-
-      {#if job.benefits}
+      {#if job.benefits && job.benefits.length > 0}
         <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
           <h4 class="font-medium text-gray-900 dark:text-gray-100 flex items-center mb-3">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,13 +68,13 @@
             </svg>
             Benefits Package
           </h4>
-          <ul class="grid grid-cols-2 gap-2" role="list">
+          <ul class="flex flex-col space-y-2" role="list">
             {#each job.benefits as benefit}
               <li class="flex items-center text-gray-600 dark:text-gray-400">
-                <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                 </svg>
-                {benefit}
+                <span class="text-sm">{benefit}</span>
               </li>
             {/each}
           </ul>
@@ -94,9 +84,9 @@
   </div>
 
   <!-- Application Section -->
-  <div class="px-6 py-4 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-100 dark:border-gray-700">
+  <div class="px-6 py-4 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-100 dark:border-gray-700 mt-auto">
     <div class="flex flex-col space-y-3">
-      <div class="mt-6 flex flex-wrap gap-4">
+      <div class="flex flex-wrap gap-4">
         {#if job.type === 'international'}
           <a
             href="/apply/international?position={encodeURIComponent(job.title)}&employer={encodeURIComponent(job.employer || '')}"
@@ -120,9 +110,9 @@
 
 <style lang="postcss">
   .job-card {
-    @apply transition-all duration-300 hover:shadow-lg;
+    @apply transition-all duration-300;
   }
   .job-card:hover {
-    transform: translateY(-4px);
+    @apply shadow-lg transform -translate-y-1;
   }
 </style>
