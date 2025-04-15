@@ -57,14 +57,14 @@
 
 <div class="max-w-4xl mx-auto">
   <!-- Contact Information -->
-  <div class="mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8" in:fade>
-    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h2>
+  <div class="mb-8 bg-white rounded-lg shadow-lg p-8" in:fade>
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Phone -->
       <div class="flex items-center space-x-4">
         <div class="flex-shrink-0">
           <svg
-            class="w-6 h-6 text-primary-600 dark:text-primary-400"
+            class="w-6 h-6 text-primary-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -78,10 +78,10 @@
           </svg>
         </div>
         <div>
-          <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Phone</p>
+          <p class="text-sm font-medium text-gray-500">Phone</p>
           <a
             href="tel:{contactInfo.phone}"
-            class="text-base text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+            class="text-base text-gray-900 hover:text-primary-600 transition-colors"
           >
             {contactInfo.phone}
           </a>
@@ -92,7 +92,7 @@
       <div class="flex items-center space-x-4">
         <div class="flex-shrink-0">
           <svg
-            class="w-6 h-6 text-primary-600 dark:text-primary-400"
+            class="w-6 h-6 text-primary-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -106,10 +106,10 @@
           </svg>
         </div>
         <div>
-          <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Email</p>
+          <p class="text-sm font-medium text-gray-500">Email</p>
           <a
             href="mailto:{contactInfo.email}"
-            class="text-base text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+            class="text-base text-gray-900 hover:text-primary-600 transition-colors"
           >
             {contactInfo.email}
           </a>
@@ -120,7 +120,7 @@
       <div class="flex items-center space-x-4">
         <div class="flex-shrink-0">
           <svg
-            class="w-6 h-6 text-primary-600 dark:text-primary-400"
+            class="w-6 h-6 text-primary-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -140,8 +140,8 @@
           </svg>
         </div>
         <div>
-          <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Address</p>
-          <p class="text-base text-gray-900 dark:text-white">
+          <p class="text-sm font-medium text-gray-500">Address</p>
+          <p class="text-base text-gray-900">
             {contactInfo.address}
           </p>
         </div>
@@ -151,23 +151,23 @@
 
   <!-- Contact Form -->
   <form
-    class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8"
+    class="bg-white rounded-lg shadow-lg p-8"
     on:submit|preventDefault={handleSubmit}
     in:fade
   >
-    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a Message</h2>
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
 
     <!-- Status Messages -->
     {#if submitStatus === 'success'}
       <div
-        class="mb-6 p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 rounded-lg"
+        class="mb-6 p-4 bg-green-100 text-green-600 rounded-lg"
         in:fly={{ y: 20, duration: 300 }}
       >
         Your message has been sent successfully! We'll get back to you soon.
       </div>
     {:else if submitStatus === 'error'}
       <div
-        class="mb-6 p-4 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-100 rounded-lg"
+        class="mb-6 p-4 bg-red-100 text-red-600 rounded-lg"
         in:fly={{ y: 20, duration: 300 }}
       >
         {errorMessage}
@@ -177,7 +177,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- Name -->
       <div>
-        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label for="name" class="block text-sm font-medium text-gray-600 mb-2">
           Full Name *
         </label>
         <input
@@ -185,14 +185,14 @@
           id="name"
           bind:value={formData.name}
           required
-          class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0"
+          class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0"
           placeholder="John Doe"
         />
       </div>
 
       <!-- Email -->
       <div>
-        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label for="email" class="block text-sm font-medium text-gray-600 mb-2">
           Email Address *
         </label>
         <input
@@ -200,21 +200,21 @@
           id="email"
           bind:value={formData.email}
           required
-          class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0"
+          class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0"
           placeholder="john@example.com"
         />
       </div>
 
       <!-- Phone -->
       <div>
-        <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label for="phone" class="block text-sm font-medium text-gray-600 mb-2">
           Phone Number
         </label>
         <input
           type="tel"
           id="phone"
           bind:value={formData.phone}
-          class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0"
+          class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0"
           placeholder="+254 700 000000"
         />
       </div>
@@ -223,7 +223,7 @@
       <div>
         <label
           for="subject"
-          class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+          class="block text-sm font-medium text-gray-600 mb-2"
         >
           Subject *
         </label>
@@ -232,7 +232,7 @@
           id="subject"
           bind:value={formData.subject}
           required
-          class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0"
+          class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0"
           placeholder="Job Application Inquiry"
         />
       </div>
@@ -240,7 +240,7 @@
 
     <!-- Message -->
     <div class="mt-6">
-      <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+      <label for="message" class="block text-sm font-medium text-gray-600 mb-2">
         Message *
       </label>
       <textarea
@@ -248,7 +248,7 @@
         bind:value={formData.message}
         required
         rows="5"
-        class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0 resize-none"
+        class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0 resize-none"
         placeholder="Your message here..."
       ></textarea>
     </div>

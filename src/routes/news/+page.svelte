@@ -58,19 +58,19 @@
   />
 </svelte:head>
 
-<div class="relative bg-gray-50 dark:bg-gray-900 min-h-screen py-16">
+<div class="relative bg-gray-50 min-h-screen py-16">
   <!-- Background Pattern -->
-  <div class="absolute inset-0 z-0 opacity-40 dark:opacity-20">
+  <div class="absolute inset-0 z-0 opacity-40">
       <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23000000%22 fill-opacity=%220.05%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); background-size: 30px 30px;"></div>
   </div>
   <div class="container mx-auto px-4 relative z-10">
     <!-- Header -->
     <header class="text-center mb-12" in:fly={{ y: 50, duration: 1000, delay: 200 }}>
-      <h1 class="group text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 relative inline-block">
+      <h1 class="group text-4xl md:text-5xl font-bold text-gray-900 mb-4 relative inline-block">
         Latest News & Updates
         <div class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
       </h1>
-      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-6">
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto mt-6">
         Stay informed about the latest opportunities, events, and industry insights from SOS
         Recruitment.
       </p>
@@ -78,7 +78,7 @@
 
     <!-- Search and Filter -->
     <div class="max-w-6xl mx-auto mb-12">
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 backdrop-blur-lg bg-opacity-90 dark:bg-opacity-90 border border-gray-200 dark:border-gray-700">
+      <div class="bg-white rounded-xl shadow-lg p-6 backdrop-blur-lg bg-opacity-90 border border-gray-200">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <!-- Search -->
           <div class="col-span-1 md:col-span-2">
@@ -86,14 +86,14 @@
               type="text"
               bind:value={searchQuery}
               placeholder="Search news..."
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary dark:focus:ring-accent transition-all duration-200"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary transition-all duration-200"
             />
           </div>
           <!-- Category Filter -->
           <div>
             <select
               bind:value={selectedCategory}
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary dark:focus:ring-accent transition-all duration-200"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary transition-all duration-200"
             >
               <option>All</option>
               {#each categories as category}
@@ -105,7 +105,7 @@
           <div>
             <button
               on:click={clearFilters}
-              class="w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-all duration-200 hover:shadow-md"
+              class="w-full px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-primary/10 transition-all duration-200 hover:shadow-md"
             >
               Clear Filters
             </button>
@@ -120,7 +120,7 @@
                 class={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 ${
                   selectedTag === tag
                     ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
                 on:click={() => (selectedTag = selectedTag === tag ? null : tag)}
               >
@@ -137,7 +137,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
         {#each featuredNews as item, i}
           <article
-            class="group relative bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl"
+            class="group relative bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl"
             in:fly={{ y: 50, duration: 1000, delay: i * 200 }}
           >
             <div class="relative h-64">
@@ -150,28 +150,28 @@
             </div>
             <div class="p-6">
               <div class="flex items-center gap-2 mb-3">
-                <time class="text-sm text-gray-500 dark:text-gray-400">
+                <time class="text-sm text-gray-500">
                   {formatDate(item.date)}
                 </time>
                 {#if item.author}
                   <span class="text-gray-400">•</span>
-                  <span class="text-sm text-gray-500 dark:text-gray-400">
+                  <span class="text-sm text-gray-500">
                     {item.author}
                   </span>
                 {/if}
               </div>
               <h2
-                class="text-2xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                class="text-2xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors"
               >
                 <a href="/news/{item.id}">{item.title}</a>
               </h2>
-              <p class="text-gray-600 dark:text-gray-400 mb-4">
+              <p class="text-gray-600 mb-4">
                 {item.description}
               </p>
               <div class="flex items-center justify-between">
                 <a
                   href="/news/{item.id}"
-                  class="inline-flex items-center text-primary dark:text-accent hover:underline font-medium group transition-all duration-200"
+                  class="inline-flex items-center text-primary hover:underline font-medium group transition-all duration-200"
                 >
                   Read more
                   <svg
@@ -192,7 +192,7 @@
                   <div class="flex gap-2">
                     {#each item.tags as tag}
                       <button
-                        class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full hover:bg-primary/10 dark:hover:bg-primary/20 transition-all duration-200 hover:shadow-sm"
+                        class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full hover:bg-primary/10 transition-all duration-200 hover:shadow-sm"
                         on:click={() => (selectedTag = tag)}
                       >
                         {tag}
@@ -211,7 +211,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {#each sortedNews.filter((item) => !item.featured || selectedCategory !== 'All' || searchQuery || selectedTag) as item, i}
         <article
-          class="group relative bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl"
+          class="group relative bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl"
           in:fly={{ y: 50, duration: 1000, delay: i * 200 }}
         >
           <div class="relative h-48 overflow-hidden">
@@ -230,28 +230,28 @@
           </div>
           <div class="p-6">
             <div class="flex items-center gap-2 mb-3">
-              <time class="text-sm text-gray-500 dark:text-gray-400">
+              <time class="text-sm text-gray-500">
                 {formatDate(item.date)}
               </time>
               {#if item.author}
                 <span class="text-gray-400">•</span>
-                <span class="text-sm text-gray-500 dark:text-gray-400">
+                <span class="text-sm text-gray-500">
                   {item.author}
                 </span>
               {/if}
             </div>
             <h2
-              class="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 hover:text-primary dark:hover:text-accent transition-colors"
+              class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-primary transition-colors"
             >
               <a href="/news/{item.id}">{item.title}</a>
             </h2>
-            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+            <p class="text-gray-600 mb-4 line-clamp-2">
               {item.description}
             </p>
             <div class="flex items-center justify-between">
               <a
                 href="/news/{item.id}"
-                class="inline-flex items-center text-primary dark:text-accent hover:underline font-medium group transition-all duration-200"
+                class="inline-flex items-center text-primary hover:underline font-medium group transition-all duration-200"
               >
                 Read more
                 <svg
@@ -272,7 +272,7 @@
                 <div class="flex gap-2">
                   {#each item.tags as tag}
                     <button
-                      class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full hover:bg-primary/10 dark:hover:bg-primary/20 transition-all duration-200 hover:shadow-sm"
+                      class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full hover:bg-primary/10 transition-all duration-200 hover:shadow-sm"
                       on:click={() => (selectedTag = tag)}
                     >
                       {tag}
@@ -289,8 +289,8 @@
     <!-- No Results Message -->
     {#if sortedNews.length === 0}
       <div class="text-center py-12">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">No Results Found</h2>
-        <p class="text-gray-600 dark:text-gray-400 mb-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">No Results Found</h2>
+        <p class="text-gray-600 mb-6">
           Try adjusting your search or filter to find what you're looking for.
         </p>
         <button

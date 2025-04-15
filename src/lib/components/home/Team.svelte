@@ -69,7 +69,7 @@
 
 <section class="py-20 relative overflow-hidden">
   <!-- Background Pattern -->
-  <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-100/50 to-gray-50 dark:from-gray-900 dark:via-gray-800/50 dark:to-gray-900">
+  <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-100/50 to-gray-50">
     <div class="absolute inset-0 opacity-30">
       <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
         <pattern id="team-grid" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -88,7 +88,7 @@
             Our Team
             <div class="absolute bottom-0 left-0 w-full h-1 bg-primary/20"></div>
           </h2>
-          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-6">
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
             Meet the dedicated professionals behind SOS Recruitment's success.
             Together, we make your career dreams a reality.
           </p>
@@ -104,7 +104,7 @@
             class="group relative flex-none w-72 snap-start">
             <!-- Decorative background blur -->
             <div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2">
+            <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2">
           <div class="relative aspect-w-4 aspect-h-5 group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50"></div>
             <div class="absolute inset-0 bg-gray-200 animate-pulse" class:hidden={loaded[i]}></div>
@@ -120,9 +120,9 @@
           </div>
           
           <div class="p-6 relative z-10">
-            <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{member.name}</h3>
-            <p class="text-primary-600 dark:text-primary-400 mb-3">{member.role}</p>
-            <p class="text-gray-600 dark:text-gray-300 mb-4 min-h-[3rem]">{member.bio}</p>
+            <h3 class="text-xl font-semibold mb-2 text-gray-900">{member.name}</h3>
+            <p class="text-primary-600 mb-3">{member.role}</p>
+            <p class="text-gray-600 mb-4 min-h-[3rem]">{member.bio}</p>
             
             <div class="flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
               <a
@@ -167,7 +167,7 @@
     </div>
 
     <!-- Bottom Pattern -->
-    <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent dark:from-gray-900"></div>
+    <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
   </div>
 </section>
 

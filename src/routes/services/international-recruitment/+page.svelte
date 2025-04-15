@@ -61,8 +61,8 @@
 >
   <!-- Overview Section -->
   <div class="mb-16">
-    <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Looking for International Career Opportunities?</h2>
-    <p class="text-gray-700 dark:text-gray-200 text-lg mb-8">
+    <h2 class="text-3xl font-bold text-gray-900 mb-6">Looking for International Career Opportunities?</h2>
+    <p class="text-gray-700 text-lg mb-8">
       SOS provides comprehensive recruitment services to help professionals secure rewarding positions
       abroad. Whether you're an experienced professional or starting your career, we connect you with
       reputable employers in Qatar and other international locations.
@@ -82,7 +82,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
       {#each steps as step}
         <div class="text-center service-feature-card">
-          <div class="w-12 h-12 rounded-full bg-[#174e4f] dark:bg-primary-600/90 text-white flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+          <div class="w-12 h-12 rounded-full bg-[#174e4f] text-white flex items-center justify-center mx-auto mb-4 text-xl font-bold">
             {step.number}
           </div>
           <h3 class="service-subheading">{step.title}</h3>
@@ -93,7 +93,7 @@
   </div>
 
   <!-- Why Choose Us Section -->
-  <div class="service-section bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-8 md:p-12">
+  <div class="service-section bg-gray-50 rounded-2xl p-8 md:p-12">
     <h2 class="service-heading">Why Choose SOS for International Recruitment?</h2>
     <ul class="service-list">
       <li class="service-list-item">
@@ -135,38 +135,38 @@
     <!-- Features Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
       {#each features as feature}
-        <div class="p-6 rounded-lg bg-gray-50 dark:bg-gray-800">
-          <h3 class="text-xl font-bold text-[#174e4f] dark:text-primary-300 mb-3">{feature.title}</h3>
-          <p class="text-gray-600 dark:text-gray-300">{feature.description}</p>
+        <div class="p-6 rounded-lg bg-gray-50">
+          <h3 class="text-xl font-bold text-[#174e4f] mb-3">{feature.title}</h3>
+          <p class="text-gray-600">{feature.description}</p>
         </div>
       {/each}
     </div>
 
     <!-- Process Section -->
     <div class="mb-16">
-      <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-gray-50 mb-12">How It Works</h2>
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">How It Works</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {#each steps as step}
           <div class="text-center">
             <div
-              class="w-12 h-12 rounded-full bg-[#174e4f] dark:bg-primary-600 text-white flex items-center justify-center mx-auto mb-4 text-xl font-bold"
+              class="w-12 h-12 rounded-full bg-[#174e4f] text-white flex items-center justify-center mx-auto mb-4 text-xl font-bold"
             >
               {step.number}
             </div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{step.title}</h3>
-            <p class="text-gray-700 dark:text-gray-200">{step.description}</p>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
+            <p class="text-gray-700">{step.description}</p>
           </div>
         {/each}
       </div>
     </div>
 
     <!-- Why Choose Us -->
-    <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 md:p-12 mb-16">
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Why Choose SOS?</h2>
+    <div class="bg-gray-50 rounded-2xl p-8 md:p-12 mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Why Choose SOS?</h2>
       <ul class="space-y-4">
         <li class="flex items-start">
           <svg
-            class="w-6 h-6 text-[#174e4f] dark:text-primary-400 mt-1 mr-3"
+            class="w-6 h-6 text-[#174e4f] mt-1 mr-3"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -178,11 +178,11 @@
               d="M5 13l4 4L19 7"
             />
           </svg>
-          <span class="text-lg text-gray-700 dark:text-gray-200">Over 15 years of experience in international recruitment</span>
+          <span class="text-lg text-gray-700">Over 15 years of experience in international recruitment</span>
         </li>
         <li class="flex items-start">
           <svg
-            class="w-6 h-6 text-[#174e4f] dark:text-primary-400 mt-1 mr-3"
+            class="w-6 h-6 text-[#174e4f] mt-1 mr-3"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -200,7 +200,7 @@
         </li>
         <li class="flex items-start">
           <svg
-            class="w-6 h-6 text-[#174e4f] dark:text-primary-400 mt-1 mr-3"
+            class="w-6 h-6 text-[#174e4f] mt-1 mr-3"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -212,15 +212,15 @@
               d="M5 13l4 4L19 7"
             />
           </svg>
-          <span class="text-lg text-gray-700 dark:text-gray-200">Comprehensive support from application to job placement</span>
+          <span class="text-lg text-gray-700">Comprehensive support from application to job placement</span>
         </li>
       </ul>
     </div>
 
     <!-- CTA Section -->
     <div class="text-center">
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Ready to Work Abroad?</h2>
-      <p class="text-lg text-gray-700 dark:text-gray-200 mb-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Ready to Work Abroad?</h2>
+      <p class="text-lg text-gray-700 mb-8">
         Take the first step towards your international career today!
       </p>
       <Button

@@ -25,7 +25,7 @@
 <div class="container mx-auto px-4 py-12">
   <div class="text-center mb-12">
     <h1 class="text-4xl font-bold mb-4">Available Positions</h1>
-    <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+    <p class="text-gray-600 max-w-2xl mx-auto">
       Explore our current job openings and find the perfect opportunity for your career growth.
     </p>
   </div>
@@ -36,7 +36,7 @@
     {#each filteredJobs as job}
       <a
         href="/jobs/{job.id}"
-        class="block transform transition-transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-lg"
+        class="block transform transition-transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
       >
         <JobCard {job} />
       </a>
@@ -44,7 +44,7 @@
   </div>
 
   {#if filteredJobs.length === 0}
-    <div class="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg" in:fade>
+    <div class="text-center py-12 bg-white rounded-lg shadow-lg" in:fade>
       <svg
         class="w-16 h-16 mx-auto mb-4 text-gray-400"
         fill="none"
@@ -59,8 +59,8 @@
           d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
         />
       </svg>
-      <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">No jobs found</h2>
-      <p class="text-gray-600 dark:text-gray-400">
+      <h2 class="text-xl font-semibold text-gray-700 mb-2">No jobs found</h2>
+      <p class="text-gray-600">
         Try adjusting your filters or check back later for new opportunities.
       </p>
     </div>

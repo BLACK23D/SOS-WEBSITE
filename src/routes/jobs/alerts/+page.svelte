@@ -65,24 +65,24 @@
   />
 </svelte:head>
 
-<div class="min-h-screen py-12 bg-gray-50 dark:bg-gray-900" in:fade>
+<div class="min-h-screen py-12 bg-gray-50" in:fade>
   <div class="container mx-auto px-4">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Job Alerts</h1>
-        <p class="text-gray-600 dark:text-gray-400">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Job Alerts</h1>
+        <p class="text-gray-600">
           Stay updated with the latest job opportunities. We'll notify you when new positions
           matching your preferences become available.
         </p>
       </div>
 
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+      <div class="bg-white rounded-lg shadow-lg p-8">
         <form on:submit|preventDefault={handleSubmit} class="space-y-6">
           <!-- Email -->
           <div>
             <label
               for="email"
-              class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+              class="block text-sm font-medium text-gray-700 mb-1"
             >
               Email Address *
             </label>
@@ -91,14 +91,14 @@
               id="email"
               bind:value={email}
               required
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
               placeholder="your.email@example.com"
             />
           </div>
 
           <!-- Job Types -->
           <div>
-            <label for="jobTypes" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label for="jobTypes" class="block text-sm font-medium text-gray-700 mb-2">
               Job Types *
             </label>
             <div class="space-y-2">
@@ -108,9 +108,9 @@
                     type="checkbox"
                     value={type.value}
                     bind:group={selectedTypes}
-                    class="h-4 w-4 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                    class="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
                   />
-                  <span class="ml-2 text-gray-700 dark:text-gray-300">{type.label}</span>
+                  <span class="ml-2 text-gray-700">{type.label}</span>
                 </label>
               {/each}
             </div>
@@ -118,7 +118,7 @@
 
           <!-- Locations -->
           <div>
-            <label for="locations" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label for="locations" class="block text-sm font-medium text-gray-700 mb-2">
               Preferred Locations
             </label>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -128,9 +128,9 @@
                     type="checkbox"
                     value={location.value}
                     bind:group={selectedLocations}
-                    class="h-4 w-4 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                    class="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
                   />
-                  <span class="ml-2 text-gray-700 dark:text-gray-300">{location.label}</span>
+                  <span class="ml-2 text-gray-700">{location.label}</span>
                 </label>
               {/each}
             </div>
@@ -173,13 +173,13 @@
           <!-- Status Messages -->
           {#if submitStatus === 'success'}
             <div
-              class="p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 rounded-lg"
+              class="p-4 bg-green-100 text-green-700 rounded-lg"
             >
               Successfully subscribed to job alerts! We'll notify you when new matching positions
               become available.
             </div>
           {:else if submitStatus === 'error'}
-            <div class="p-4 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-100 rounded-lg">
+            <div class="p-4 bg-red-100 text-red-700 rounded-lg">
               Failed to subscribe to job alerts. Please try again later.
             </div>
           {/if}

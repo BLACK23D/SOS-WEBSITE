@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class="w-full h-full bg-primary-light/5 dark:bg-primary-light/10 flex items-center justify-center"
+  class="w-full h-full bg-primary-light/5 flex items-center justify-center"
 >
-  <span class="text-4xl font-bold text-primary-dark/70 dark:text-primary-light/70">{initials}</span>
+  <span class="text-4xl font-bold text-primary-dark/70">{initials}</span>
 </div>

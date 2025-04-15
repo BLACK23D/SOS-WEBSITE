@@ -106,7 +106,7 @@
   <meta name="twitter:description" content="Browse our current job openings in Kenya and internationally. Find opportunities in healthcare, hospitality, transport, cleaning services, and safety & security." />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800" in:fade>
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white" in:fade>
   <!-- Hero Section -->
   <div class="relative bg-primary py-16">
     <div class="absolute inset-0 bg-primary-dark/10"></div>
@@ -122,12 +122,12 @@
       <!-- Job Categories -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {#each jobCategories as category}
-          <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+          <div class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300">
             <div class="text-4xl mb-4">{category.icon}</div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
               {category.title}
             </h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-3">{category.description}</p>
+            <p class="text-gray-600 mb-3">{category.description}</p>
             <div class="text-primary font-medium">{category.count} positions</div>
           </div>
         {/each}
@@ -137,9 +137,9 @@
 
   <!-- Job Listings -->
   <div class="container mx-auto px-4 py-16">
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+    <div class="bg-white rounded-2xl shadow-xl p-8">
       <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Available Positions</h2>
+        <h2 class="text-3xl font-bold text-gray-900">Available Positions</h2>
         <div class="w-full md:w-auto">
           <JobFilter
             {selectedType}

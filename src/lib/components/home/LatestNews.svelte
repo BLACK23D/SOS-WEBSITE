@@ -28,7 +28,7 @@
 
 <section class="py-16 relative overflow-hidden">
   <!-- Background Pattern -->
-  <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-100/50 to-gray-50 dark:from-gray-900 dark:via-gray-800/50 dark:to-gray-900">
+  <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-100/50 to-gray-50">
     <div class="absolute inset-0 opacity-30">
       <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
         <pattern id="news-grid" width="15" height="15" patternUnits="userSpaceOnUse">
@@ -47,7 +47,7 @@
             Latest News & Updates
             <div class="absolute bottom-0 left-0 w-full h-1 bg-primary/20"></div>
           </h2>
-          <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-6">
+          <p class="text-gray-600 max-w-2xl mx-auto mt-6">
             Stay informed about the latest opportunities, events, and updates from SOS Recruitment.
             Your success story begins with staying connected.
           </p>
@@ -78,7 +78,7 @@
         {#if mounted}
           <article
             in:fly={{ y: 50, duration: 1000, delay: 400 + i * 200 }}
-            class="group relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+            class="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
           >
             <!-- Decorative background blur -->
             <div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -99,22 +99,22 @@
           </div>
           <div class="p-6">
             <div class="flex items-center gap-2 mb-3">
-              <time class="text-sm text-gray-500 dark:text-gray-400">
+              <time class="text-sm text-gray-500">
                 {formatDate(item.date)}
               </time>
               {#if item.author}
                 <span class="text-gray-400">•</span>
-                <span class="text-sm text-gray-500 dark:text-gray-400">
+                <span class="text-sm text-gray-500">
                   {item.author}
                 </span>
               {/if}
             </div>
             <h3
-              class="text-xl font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 hover:text-blue-600 transition-colors"
             >
               <a href="/news/{item.id}">{item.title}</a>
             </h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+            <p class="text-gray-600 mb-4 line-clamp-3">
               {item.description}
             </p>
             <div class="flex items-center justify-between">
@@ -144,7 +144,7 @@
                 <div class="flex gap-2">
                   {#each item.tags.slice(0, 2) as tag}
                     <span
-                      class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full"
+                      class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full"
                     >
                       {tag}
                     </span>

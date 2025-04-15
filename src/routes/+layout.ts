@@ -26,7 +26,6 @@ export const _preloadComponents = [
   // Layout components
   () => import('$lib/components/layout/Navbar.svelte'),
   () => import('$lib/components/layout/Footer.svelte'),
-  () => import('$lib/components/layout/ThemeToggle.svelte'),
 
   // Home page components
   () => import('$lib/components/home/Team.svelte'),

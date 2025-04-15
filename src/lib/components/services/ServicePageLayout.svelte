@@ -68,15 +68,15 @@
   }
 
   :global(.service-heading) {
-    @apply text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6;
+    @apply text-3xl font-bold text-gray-900 mb-6;
   }
 
   :global(.service-subheading) {
-    @apply text-xl font-bold text-gray-800 dark:text-gray-100 mb-3;
+    @apply text-xl font-bold text-gray-800 mb-3;
   }
 
   :global(.service-text) {
-    @apply text-gray-700 dark:text-gray-200;
+    @apply text-gray-700;
   }
 
   :global(.service-list) {
@@ -84,11 +84,11 @@
   }
 
   :global(.service-list-item) {
-    @apply flex items-start space-x-3 text-gray-700 dark:text-gray-200;
+    @apply flex items-start space-x-3 text-gray-700;
   }
 
   :global(.service-icon) {
-    @apply w-6 h-6 text-[#174e4f] dark:text-primary-300 mt-1 flex-shrink-0;
+    @apply w-6 h-6 text-[#174e4f] mt-1 flex-shrink-0;
   }
 
   :global(.service-section) {
@@ -100,6 +100,6 @@
   }
 
   :global(.service-feature-card) {
-    @apply p-6 rounded-lg bg-gray-50 dark:bg-gray-800/50 transition-all duration-300;
+    @apply p-6 rounded-lg bg-gray-50 transition-all duration-300;
   }
 </style>

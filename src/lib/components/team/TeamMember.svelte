@@ -14,10 +14,10 @@
 </script>
 
 <div
-  class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden h-full group"
+  class="bg-white rounded-2xl shadow-lg overflow-hidden h-full group"
   in:fade={{ duration: 300 }}
 >
-  <div class="aspect-w-1 aspect-h-1 bg-gray-100 dark:bg-gray-700">
+  <div class="aspect-w-1 aspect-h-1 bg-gray-100">
     <div class="relative w-full h-full">
       {#if imageError}
         <TeamPlaceholder name={member.name} />
@@ -36,17 +36,17 @@
     </div>
   </div>
   <div class="p-6">
-    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+    <h3 class="text-xl font-bold text-gray-900 mb-1">
       {member.name}
     </h3>
     <p
-      class="text-primary-dark dark:text-primary-light font-medium mb-4 text-sm uppercase tracking-wider"
+      class="text-primary-dark font-medium mb-4 text-sm uppercase tracking-wider"
     >
       {member.role}
     </p>
-    <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed">{member.bio}</p>
+    <p class="text-gray-600 mb-6 text-sm leading-relaxed">{member.bio}</p>
 
-    <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+    <div class="pt-4 border-t border-gray-200">
       <a
         href="mailto:{member.email}"
         class="inline-flex items-center gap-2 text-sm text-primary-dark hover:text-primary transition-colors"

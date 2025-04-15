@@ -16,13 +16,13 @@
 </script>
 
 <div
-  class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
+  class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
   in:fly={{ y: 20, delay: index * 100 }}
 >
   <div class="p-6">
     <div class="flex items-center mb-4">
       <div
-        class="w-12 h-12 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0"
+        class="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0"
       >
         <img
           src={imageError ? placeholderImage : testimonial.image}
@@ -33,15 +33,15 @@
       </div>
       <div class="ml-4">
         <h3 class="font-semibold text-lg">{testimonial.name}</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
+        <p class="text-sm text-gray-600">
           {testimonial.role} at {testimonial.company}
         </p>
-        <p class="text-sm text-gray-500 dark:text-gray-500">
+        <p class="text-sm text-gray-500">
           {testimonial.location}
         </p>
       </div>
     </div>
-    <blockquote class="text-gray-700 dark:text-gray-300">
+    <blockquote class="text-gray-700">
       "{testimonial.content}"
     </blockquote>
   </div>

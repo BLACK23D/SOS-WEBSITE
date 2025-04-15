@@ -1,4 +1,16 @@
-<script>
+<script lang="ts">
+  type Question = {
+    id: string;
+    question: string;
+    answer: string | string[];
+  };
+
+  type FAQSection = {
+    title: string;
+    icon: string;
+    questions: Question[];
+  };
+
   let openQuestionId = '';
 
   const faqSections = [
@@ -91,7 +103,7 @@
     }
   ];
 
-  function toggleQuestion(id) {
+  function toggleQuestion(id: string): void {
     openQuestionId = openQuestionId === id ? '' : id;
   }
 </script>
@@ -104,7 +116,7 @@
   />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
   <!-- Hero Section -->
   <div class="relative bg-primary py-16 overflow-hidden">
     <!-- Background Pattern -->
@@ -135,7 +147,10 @@
         {#each faqSections as section}
           <button 
             class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-colors duration-300 group"
-            on:click={() => document.getElementById(section.title.toLowerCase().replace(/\s+/g, '-')).scrollIntoView({ behavior: 'smooth' })}
+            on:click={() => {
+              const element = document.getElementById(section.title.toLowerCase().replace(/\s+/g, '-'));
+              if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }}
           >
             <div class="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">{section.icon}</div>
             <div class="text-white font-medium">{section.title}</div>
@@ -148,24 +163,24 @@
   <div class="container mx-auto px-4 py-16">
     <div class="max-w-4xl mx-auto space-y-8">
       {#each faqSections as section}
-        <div id={section.title.toLowerCase().replace(/\s+/g, '-')} class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:border-primary/20 transition-colors duration-300 relative">
+        <div id={section.title.toLowerCase().replace(/\s+/g, '-')} class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:border-primary/20 transition-colors duration-300 relative">
           <!-- Background decoration -->
           <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -z-10 blur-3xl"></div>
           <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full -z-10 blur-3xl"></div>
           <!-- Section Header -->
-          <div class="p-6 bg-gradient-to-r from-primary/5 to-transparent border-b border-gray-100 dark:border-gray-700">
+          <div class="p-6 bg-gradient-to-r from-primary/5 to-transparent border-b border-gray-100">
             <div class="flex items-center gap-3">
               <div class="p-2 bg-primary/10 rounded-xl">
                 <span class="text-3xl">{section.icon}</span>
               </div>
-              <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
+              <h2 class="text-2xl font-semibold text-gray-900">
                 {section.title}
               </h2>
             </div>
           </div>
 
           <!-- Questions -->
-          <div class="divide-y divide-gray-100 dark:divide-gray-700">
+          <div class="divide-y divide-gray-100">
             {#each section.questions as { id, question, answer }}
               <div class="p-6">
                 <!-- Question Header -->
@@ -174,12 +189,12 @@
                   on:click={() => toggleQuestion(id)}
                 >
                   <div class="flex-1">
-                    <h3 class="text-lg font-medium text-gray-900 dark:text-white pr-8 group-hover:text-primary transition-colors">
+                    <h3 class="text-lg font-medium text-gray-900 pr-8 group-hover:text-primary transition-colors">
                       {question}
                     </h3>
                   </div>
                   <span
-                    class="flex-shrink-0 ml-1.5 p-1.5 text-gray-400 dark:text-gray-500 group-hover:text-primary transition-colors"
+                    class="flex-shrink-0 ml-1.5 p-1.5 text-gray-400 group-hover:text-primary transition-colors"
                   >
                     <div class="relative">
                       <div class="absolute inset-0 bg-primary/10 rounded-full transition-opacity duration-200 opacity-0 group-hover:opacity-100"></div>
@@ -202,7 +217,7 @@
 
                 <!-- Answer -->
                 {#if openQuestionId === id}
-                  <div class="mt-4 text-gray-700 dark:text-gray-200 space-y-2">
+                  <div class="mt-4 text-gray-700 space-y-2">
                     {#if Array.isArray(answer)}
                       {#each answer as line}
                         <p>{line}</p>
@@ -231,8 +246,8 @@
         </svg>
       </div>
       
-      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Still have questions?</h3>
-      <p class="text-gray-700 dark:text-gray-200 mb-8 max-w-xl mx-auto">
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">Still have questions?</h3>
+      <p class="text-gray-700 mb-8 max-w-xl mx-auto">
         Our team is here to help you with any questions you might have about our recruitment process.
         Feel free to reach out!
       </p>

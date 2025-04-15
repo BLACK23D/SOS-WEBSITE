@@ -21,15 +21,15 @@
   }
 </script>
 
-<div class="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4" in:fade>
+<div class="bg-gray-50 rounded-lg p-4" in:fade>
   <div class="flex flex-col sm:flex-row gap-4">
     <div>
-      <label for="type" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+      <label for="type" class="block text-sm font-medium text-gray-700 mb-2">
         Job Type
       </label>
       <select
         id="type"
-        class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-primary-500 focus:ring-primary-500"
+        class="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
         value={selectedType}
         on:change={handleTypeChange}
       >
@@ -42,12 +42,12 @@
     </div>
 
     <div>
-      <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+      <label for="location" class="block text-sm font-medium text-gray-700 mb-2">
         Location
       </label>
       <select
         id="location"
-        class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-primary-500 focus:ring-primary-500"
+        class="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
         value={selectedLocation}
         on:change={handleLocationChange}
       >

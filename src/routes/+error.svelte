@@ -9,7 +9,7 @@
     <h1 class="text-6xl font-bold text-primary mb-4">
       {$page.status}
     </h1>
-    <p class="text-2xl text-gray-600 dark:text-gray-400 mb-8">
+    <p class="text-2xl text-gray-600 mb-8">
       {#if $page.status === 404}
         Page not found
       {:else}

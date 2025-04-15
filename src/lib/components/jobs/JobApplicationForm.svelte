@@ -85,18 +85,18 @@
 </script>
 
 <form
-  class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8"
+  class="bg-white rounded-lg shadow-lg p-8"
   on:submit|preventDefault={handleSubmit}
   in:fade
 >
-  <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">
     Apply for {job.title}
   </h2>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <!-- Full Name -->
     <div>
-      <label for="fullName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+      <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">
         Full Name *
       </label>
       <input
@@ -104,14 +104,14 @@
         id="fullName"
         bind:value={formData.fullName}
         required
-        class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0"
+        class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0"
         placeholder="John Doe"
       />
     </div>
 
     <!-- Email -->
     <div>
-      <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
         Email Address *
       </label>
       <input
@@ -119,14 +119,14 @@
         id="email"
         bind:value={formData.email}
         required
-        class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0"
+        class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0"
         placeholder="john@example.com"
       />
     </div>
 
     <!-- Phone -->
     <div>
-      <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+      <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
         Phone Number *
       </label>
       <input
@@ -134,7 +134,7 @@
         id="phone"
         bind:value={formData.phone}
         required
-        class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0"
+        class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0"
         placeholder="+254 700 000000"
       />
     </div>
@@ -152,7 +152,7 @@
         id="nationality"
         bind:value={formData.nationality}
         required
-        class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0"
+        class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0"
         placeholder="Kenyan"
       />
     </div>
@@ -169,7 +169,7 @@
       accept=".pdf"
       required
       on:change={handleCVChange}
-      class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0"
+      class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0"
     />
   </div>
 
@@ -184,7 +184,7 @@
       multiple
       accept=".pdf,.doc,.docx"
       on:change={handleDocumentsChange}
-      class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-0"
+      class="w-full px-4 py-2 rounded-lg bg-gray-100 text-gray-900 border-0"
     />
     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Accepted formats: PDF, DOC, DOCX</p>
   </div>

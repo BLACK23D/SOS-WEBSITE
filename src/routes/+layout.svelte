@@ -8,24 +8,10 @@
   import { onMount } from 'svelte';
   import { setupScrollAnimations } from '$lib/utils/scroll';
 
-  let isDarkMode = false;
-  let mounted = false;
-
   // SEO metadata
   const siteTitle = 'SOS Recruitment - Your Gateway to Global Opportunities';
   const siteDescription =
     'Leading recruitment agency connecting talented professionals with international and local job opportunities. Find your dream job today.';
-
-  function updateTheme() {
-    if (typeof document !== 'undefined' && mounted) {
-      document.documentElement.classList.toggle('dark', isDarkMode);
-      localStorage.setItem('darkMode', isDarkMode.toString());
-      
-      // Force a re-render of the page by toggling a class
-      document.body.classList.remove('theme-updated');
-      setTimeout(() => document.body.classList.add('theme-updated'), 0);
-    }
-  }
 
   function preloadCriticalAssets() {
     const assets = [{ href: '/fonts/inter-var.woff2', as: 'font', type: 'font/woff2' }];
@@ -41,23 +27,6 @@
   }
 
   onMount(() => {
-    // Theme setup
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const storedTheme = localStorage.getItem('darkMode');
-    isDarkMode = storedTheme !== null ? storedTheme === 'true' : prefersDark;
-    mounted = true;
-    updateTheme();
-    
-    // Listen for system theme changes
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleThemeChange = (e: MediaQueryListEvent) => {
-      if (localStorage.getItem('darkMode') === null) {
-        isDarkMode = e.matches;
-        updateTheme();
-      }
-    };
-    mediaQuery.addEventListener('change', handleThemeChange);
-
     // Preload critical assets
     const links = document.head.querySelectorAll('link[rel="preload"]');
     if (!links.length) {
@@ -68,8 +37,6 @@
     const cleanup = setupScrollAnimations();
     return () => {
       if (cleanup) cleanup();
-      mediaQuery.removeEventListener('change', handleThemeChange);
-      mounted = false;
     };
   });
 </script>
@@ -95,8 +62,7 @@
   <!-- Performance Optimizations -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <meta name="theme-color" content="#174e4f" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#174e4f" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
@@ -104,14 +70,8 @@
   <link rel="manifest" href="/manifest.json" />
 </svelte:head>
 
-<div class="flex flex-col min-h-screen bg-white dark:bg-gray-900">
-  <Navbar
-    {isDarkMode}
-    on:toggleTheme={() => {
-      isDarkMode = !isDarkMode;
-      updateTheme();
-    }}
-  />
+<div class="flex flex-col min-h-screen bg-white">
+  <Navbar />
 
   <main class="flex-grow">
     <slot />

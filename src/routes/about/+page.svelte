@@ -58,7 +58,7 @@
   />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800" in:fade>
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white" in:fade>
   <!-- Hero Section -->
   <div class="relative bg-primary py-20">
     <div class="absolute inset-0 bg-primary-dark/10"></div>
@@ -85,14 +85,14 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
       {#each achievements as { number, label, icon }, i}
         <div
-          class="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-lg transform hover:scale-105 transition-all duration-300"
+          class="bg-white rounded-xl p-6 text-center shadow-lg transform hover:scale-105 transition-all duration-300"
           in:fly={{ y: 20, duration: 500, delay: i * 100 }}
         >
           <div class="text-4xl mb-4">{icon}</div>
-          <div class="text-3xl md:text-4xl font-bold text-primary dark:text-white mb-2">
+          <div class="text-3xl md:text-4xl font-bold text-primary mb-2">
             {number}
           </div>
-          <div class="text-gray-600 dark:text-gray-300 font-medium">
+          <div class="text-gray-600 font-medium">
             {label}
           </div>
         </div>
@@ -101,18 +101,18 @@
 
     <!-- Core Values -->
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
         Our Core Values
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {#each coreValues as { icon, value, description }, i}
           <div
-            class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+            class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300"
             in:fly={{ y: 20, duration: 500, delay: i * 100 }}
           >
             <div class="text-4xl mb-4">{icon}</div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{value}</h3>
-            <p class="text-gray-600 dark:text-gray-300">{description}</p>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{value}</h3>
+            <p class="text-gray-600">{description}</p>
           </div>
         {/each}
       </div>
@@ -120,22 +120,22 @@
 
     <!-- Global Presence -->
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
         Our Global Presence
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {#each branches as { city, country, type, flag }, i}
           <div
-            class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+            class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300"
             in:fly={{ y: 20, duration: 500, delay: i * 100 }}
           >
             <div class="text-4xl mb-4">{flag}</div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">{city}</h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-2">{country}</p>
+            <h3 class="text-xl font-semibold text-gray-900 mb-1">{city}</h3>
+            <p class="text-gray-600 mb-2">{country}</p>
             <span
               class="inline-block px-3 py-1 rounded-full text-sm {type === 'Head Office'
                 ? 'bg-primary/10 text-primary'
-                : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}"
+                : 'bg-gray-100 text-gray-600'}"
             >
               {type}
             </span>
@@ -145,11 +145,11 @@
     </div>
 
     <!-- CTA Section -->
-    <div class="bg-primary/5 dark:bg-primary/10 rounded-2xl p-12 text-center max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+    <div class="bg-primary/5 rounded-2xl p-12 text-center max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
         Ready to Start Your Journey?
       </h2>
-      <p class="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+      <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
         Whether you're looking for your next career move or seeking talent for your organization, we're
         here to help you succeed.
       </p>

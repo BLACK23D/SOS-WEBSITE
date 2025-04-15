@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 rounded-lg"
+  class="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg"
   role="alert"
   aria-live="polite"
 >
@@ -24,7 +24,7 @@
       </svg>
     </div>
     <div class="ml-3">
-      <p class="text-sm text-red-700 dark:text-red-200">{message}</p>
+      <p class="text-sm text-red-700">{message}</p>
     </div>
   </div>
 </div>

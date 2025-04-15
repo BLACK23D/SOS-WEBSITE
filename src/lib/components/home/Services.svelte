@@ -77,7 +77,7 @@
             Our Services
             <div class="absolute bottom-0 left-0 w-full h-1 bg-primary/20"></div>
           </h2>
-          <p class="text-lg text-gray-600 dark:text-gray-200 max-w-2xl mx-auto mt-6">
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
             Comprehensive recruitment solutions tailored to your needs. We provide end-to-end support
             for your career journey.
           </p>

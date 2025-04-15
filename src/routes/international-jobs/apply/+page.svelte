@@ -62,10 +62,10 @@
   </script>
 </svelte:head>
 
-<div class="min-h-screen py-12 bg-gray-50 dark:bg-gray-900">
+<div class="min-h-screen py-12 bg-gray-50">
   <div class="container mx-auto px-4">
-    <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6" in:fade>
-      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6" in:fade>
+      <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">
         International Job Application
       </h1>
       <div class="w-full" in:fade={{ delay: 200 }}>

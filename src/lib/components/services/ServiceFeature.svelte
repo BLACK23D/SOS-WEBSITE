@@ -4,11 +4,11 @@
   export let icon: string = 'check';
 </script>
 
-<div class="p-6 rounded-lg bg-gray-50 dark:bg-gray-800/50 transition-all duration-300 hover:shadow-lg">
+<div class="p-6 rounded-lg bg-gray-50 transition-all duration-300 hover:shadow-lg">
   <div class="flex items-start space-x-4">
     {#if icon === 'check'}
       <svg
-        class="w-6 h-6 text-[#174e4f] dark:text-primary-300 mt-1 flex-shrink-0"
+        class="w-6 h-6 text-[#174e4f] mt-1 flex-shrink-0"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

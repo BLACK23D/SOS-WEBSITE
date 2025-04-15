@@ -59,20 +59,20 @@
   ];
 </script>
 
-<div class="min-h-screen py-12 bg-gray-50 dark:bg-gray-900">
+<div class="min-h-screen py-12 bg-gray-50">
   <div class="container mx-auto px-4">
     <div class="max-w-5xl mx-auto">
       <h1 class="text-4xl font-bold text-center mb-8">Local Job Opportunities</h1>
 
       <div class="grid gap-8">
         {#each jobs as job}
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="p-6">
               <div class="flex justify-between items-start">
                 <div>
                   <h2 class="text-2xl font-semibold mb-2">{job.title}</h2>
                   <div class="flex gap-4 mb-4">
-                    <span class="inline-flex items-center text-sm text-gray-600 dark:text-gray-400">
+                    <span class="inline-flex items-center text-sm text-gray-600">
                       <svg
                         class="w-4 h-4 mr-1"
                         fill="none"
@@ -94,7 +94,7 @@
                       </svg>
                       {job.location}
                     </span>
-                    <span class="inline-flex items-center text-sm text-gray-600 dark:text-gray-400">
+                    <span class="inline-flex items-center text-sm text-gray-600">
                       <svg
                         class="w-4 h-4 mr-1"
                         fill="none"
@@ -110,7 +110,7 @@
                       </svg>
                       {job.department}
                     </span>
-                    <span class="inline-flex items-center text-sm text-gray-600 dark:text-gray-400">
+                    <span class="inline-flex items-center text-sm text-gray-600">
                       <svg
                         class="w-4 h-4 mr-1"
                         fill="none"
@@ -133,13 +133,13 @@
                 </a>
               </div>
 
-              <p class="text-gray-600 dark:text-gray-400 mb-4">
+              <p class="text-gray-600 mb-4">
                 {job.description}
               </p>
 
               <div>
                 <h3 class="font-semibold mb-2">Requirements:</h3>
-                <ul class="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-400">
+                <ul class="list-disc list-inside space-y-1 text-gray-600">
                   {#each job.requirements as requirement}
                     <li>{requirement}</li>
                   {/each}
@@ -153,10 +153,10 @@
       <!-- No Jobs Message -->
       {#if jobs.length === 0}
         <div class="text-center py-12">
-          <h2 class="text-2xl font-semibold text-gray-600 dark:text-gray-400">
+          <h2 class="text-2xl font-semibold text-gray-600">
             No internal positions available at the moment.
           </h2>
-          <p class="mt-2 text-gray-500 dark:text-gray-500">
+          <p class="mt-2 text-gray-500">
             Please check back later for new opportunities.
           </p>
         </div>

@@ -62,13 +62,13 @@
   />
 </svelte:head>
 
-<div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-24">
+<div class="min-h-screen bg-gray-50 py-24">
   <div class="container mx-auto px-4">
     <div class="text-center mb-16">
-      <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+      <h1 class="text-4xl font-bold text-gray-900 mb-6">
         Client Success Stories
       </h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
         Hear from professionals and employers who have experienced success through our recruitment
         services. These testimonials reflect our commitment to excellence in career placement.
       </p>
@@ -77,7 +77,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {#each testimonials as testimonial, i}
         <div
-          class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
+          class="bg-white rounded-xl shadow-lg overflow-hidden"
           in:fly={{ y: 20, delay: 200 + i * 100 }}
         >
           <div class="p-6">
@@ -93,7 +93,7 @@
             </div>
 
             <!-- Content -->
-            <blockquote class="text-gray-600 dark:text-gray-400 mb-6 italic">
+            <blockquote class="text-gray-600 mb-6 italic">
               "{testimonial.content}"
             </blockquote>
 
@@ -110,17 +110,17 @@
                   />
                 {:else}
                   <div
-                    class="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/5 flex items-center justify-center text-lg font-bold text-primary"
+                    class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-lg font-bold text-primary"
                   >
                     {getInitials(testimonial.name)}
                   </div>
                 {/if}
               </div>
               <div>
-                <div class="font-medium text-gray-900 dark:text-gray-100">
+                <div class="font-medium text-gray-900">
                   {testimonial.name}
                 </div>
-                <div class="text-sm text-gray-500 dark:text-gray-400">
+                <div class="text-sm text-gray-500">
                   {testimonial.role} at {testimonial.company}
                 </div>
               </div>

@@ -2,13 +2,13 @@
   import { fade } from 'svelte/transition';
 </script>
 
-<section class="py-16 bg-gray-50 dark:bg-gray-900" in:fade>
+<section class="py-16 bg-gray-50" in:fade>
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
         Visit Our Office
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
         Find us at Westlands Arcade Building, Ground Floor, Door #3 in Westlands, Nairobi
       </p>
     </div>
@@ -29,11 +29,11 @@
       </div>
       
       <!-- Office Info Card -->
-      <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg max-w-sm">
-        <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+      <div class="absolute bottom-4 left-4 bg-white p-4 rounded-lg shadow-lg max-w-sm">
+        <h3 class="font-semibold text-gray-900 mb-2">
           SOS Recruitment Office
         </h3>
-        <div class="space-y-1 text-gray-600 dark:text-gray-400">
+        <div class="space-y-1 text-gray-600">
           <p>Westlands Arcade Building</p>
           <p>Ground Floor, Door #3</p>
           <p>Westlands, Nairobi</p>
@@ -42,7 +42,7 @@
           href="https://www.google.com/maps/dir//Westlands+Arcade,+Nairobi"
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-4 inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
+          class="mt-4 inline-flex items-center text-primary-600 hover:text-primary-700"
         >
           Get Directions
           <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

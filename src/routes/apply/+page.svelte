@@ -112,7 +112,7 @@
   </script>
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
   <!-- Hero Section -->
   <div class="relative bg-primary py-16">
     <div class="absolute inset-0 bg-primary-dark/10"></div>
@@ -176,7 +176,7 @@
       </div>
 
       <!-- Application Form Section -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 hover:border-primary/20 transition-colors duration-300 relative" in:fade={{ delay: 200 }}>
+      <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:border-primary/20 transition-colors duration-300 relative" in:fade={{ delay: 200 }}>
         <!-- Background decoration -->
         <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -z-10 blur-3xl"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full -z-10 blur-3xl"></div>
@@ -186,7 +186,7 @@
           <p class="text-gray-600">Please fill out all required fields. Our team will review your application within 48 hours.</p>
         </div>
         {#if formLoading}
-          <div class="absolute inset-0 flex items-center justify-center bg-white dark:bg-gray-800">
+          <div class="absolute inset-0 flex items-center justify-center bg-white">
             <div class="animate-spin rounded-full h-12 w-12 border-4 border-primary-600 border-t-transparent"></div>
           </div>
         {/if}
@@ -199,8 +199,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mt-6 mb-4">Application Submitted!</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-lg max-w-md mx-auto">
+            <h3 class="text-3xl font-bold text-gray-900 mt-6 mb-4">Application Submitted!</h3>
+            <p class="text-gray-600 text-lg max-w-md mx-auto">
               Thank you for applying. Our recruitment team will review your application and contact you within 48 hours.
             </p>
             <div class="mt-8">

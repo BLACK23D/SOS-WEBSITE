@@ -58,20 +58,20 @@
   </script>
 </svelte:head>
 
-<div class="min-h-screen py-12 bg-gray-50 dark:bg-gray-900">
+<div class="min-h-screen py-12 bg-gray-50">
   <div class="container mx-auto px-4">
     <!-- Hero Section -->
     <div class="text-center mb-12" in:fade>
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
         International Job Opportunities
       </h1>
-      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
         Discover exciting career opportunities abroad with comprehensive benefits including food, transport, and accommodation.
       </p>
       <div class="flex justify-center space-x-4">
         <a
           href="/apply/international"
-          class="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-primary-500 hover:bg-primary-600 rounded-lg transition duration-150 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+          class="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-primary-500 hover:bg-primary-600 rounded-lg transition duration-150 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
         >
           Apply Now
           <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@
       <!-- No Results State -->
       {#if filteredJobs.length === 0}
         <div
-          class="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg"
+          class="text-center py-12 bg-white rounded-lg shadow-lg"
           in:fade
         >
           <svg
@@ -120,10 +120,10 @@
               d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          <h2 class="text-xl font-semibold text-gray-700 mb-2">
             No jobs found
           </h2>
-          <p class="text-gray-600 dark:text-gray-400">
+          <p class="text-gray-600">
             Try adjusting your filters or check back later for new opportunities.
           </p>
         </div>
