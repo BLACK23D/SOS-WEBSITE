@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    // This script handles routing for True Host
+    (function() {
+      // Get the current path
+      var path = window.location.pathname;
+      
+      // List of known routes that should be handled by the SPA
+      var spaRoutes = [
+        '/jobs',
+        '/international-jobs',
+        '/internal-jobs',
+        '/apply',
+        '/about',
+        '/contact',
+        '/services',
+        '/faq',
+        '/news'
+      ];
+      
+      // Job-specific routes that need special handling
+      var jobRoutes = {
+        '/jobs': '/jobs',
+        '/international-jobs': '/international-jobs',
+        '/internal-jobs': '/internal-jobs',
+        '/apply': '/apply'
+      };
+      
+      // Check if this is a job-specific route that needs direct handling
+      for (var route in jobRoutes) {
+        if (path === route || path.startsWith(route + '/')) {
+          // Direct redirect to the specific job page
+          window.location.href = jobRoutes[route];
+          return;
+        }
+      }
+      
+      // Check if this is a route that should be handled by the SPA
+      var isSpaRoute = spaRoutes.some(function(route) {
+        return path.startsWith(route);
+      });
+      
+      if (isSpaRoute) {
+        // Redirect to the home page with the current path as a query parameter
+        window.location.href = '/?redirect=' + encodeURIComponent(path);
+      } else {
+        // For unknown routes, just redirect to the home page
+        window.location.href = '/';
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>

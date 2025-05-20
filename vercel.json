@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "framework": "sveltekit",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "outputDirectory": ".svelte-kit/output",
+  "public": true,
+  "regions": ["cdg1"],
+  "env": {
+    "ORIGIN": "@origin",
+    "EMAIL_USER": "@email_user",
+    "EMAIL_PASSWORD": "@email_password"
+  }
+}

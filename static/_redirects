@@ -1,0 +1,29 @@
+# Redirects from what the browser requests to what we serve
+/* /index.html 200
+
+# Specific redirects for job pages - higher priority and more specific
+/jobs /index.html 200
+/jobs/* /index.html 200
+/jobs/index.html /index.html 200
+
+/international-jobs /index.html 200
+/international-jobs/* /index.html 200
+/international-jobs/index.html /index.html 200
+
+/internal-jobs /index.html 200
+/internal-jobs/* /index.html 200
+/internal-jobs/index.html /index.html 200
+
+# Application routes
+/apply /index.html 200
+/apply/* /index.html 200
+/apply/index.html /index.html 200
+
+# Other important routes
+/about /index.html 200
+/contact /index.html 200
+/services/* /index.html 200
+/services /index.html 200
+/faq /index.html 200
+/news/* /index.html 200
+/news /index.html 200

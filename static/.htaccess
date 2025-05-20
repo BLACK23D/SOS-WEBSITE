@@ -1,0 +1,37 @@
+RewriteEngine On
+Options -MultiViews
+RewriteBase /
+
+# Handle Authorization Header
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Redirect Trailing Slashes If Not A Folder...
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [L,R=301]
+
+# If the requested file or directory exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Explicitly handle job-related routes with higher priority
+RewriteRule ^jobs$ index.html [L]
+RewriteRule ^jobs/(.*)$ index.html [L]
+RewriteRule ^international-jobs$ index.html [L]
+RewriteRule ^international-jobs/(.*)$ index.html [L]
+RewriteRule ^internal-jobs$ index.html [L]
+RewriteRule ^internal-jobs/(.*)$ index.html [L]
+RewriteRule ^apply$ index.html [L]
+RewriteRule ^apply/(.*)$ index.html [L]
+
+# For all other routes that don't exist, serve index.html
+RewriteRule ^ index.html [L]
+
+# Set proper MIME types
+<IfModule mod_mime.c>
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType application/json .json
+</IfModule>

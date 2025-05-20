@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="/job-router.js"></script>
+    <script>
+      // Handle redirects from 404.html
+      (function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var redirectPath = urlParams.get('redirect');
+        
+        if (redirectPath) {
+          // Remove the redirect parameter from the URL
+          urlParams.delete('redirect');
+          var newUrl = window.location.pathname;
+          if (urlParams.toString()) {
+            newUrl += '?' + urlParams.toString();
+          }
+          
+          // Update the URL without the redirect parameter
+          window.history.replaceState({}, document.title, newUrl);
+          
+          // After the app loads, navigate to the requested path
+          window.addEventListener('DOMContentLoaded', function() {
+            // This will be handled by SvelteKit's router
+            setTimeout(function() {
+              window.location.href = redirectPath;
+            }, 100);
+          });
+        }
+      })();
+    </script>
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
+</html>
